@@ -1,0 +1,30 @@
+{
+  "name": "ie",
+  "version": "1.0.0",
+  "description": "ie circle packing and map",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server --open=index.html",
+    "lint": "eslint main.js",
+    "sass": "node-sass -w main.scss main.css",
+    "autoprefix": "postcss --use autoprefixer --replace css/*"
+  },
+  "author": "LV",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^4.10.2",
+    "d3-queue": "^3.0.7",
+    "d3-geo-projection": "^2.3.1",
+    "d3-scale-chromatic": "^1.1.1",
+    "topojson": "^3.0.2",
+    "moment": "^2.18.1"
+  },
+  "devDependencies": {
+    "live-server": "~ 1.2.0",
+    "eslint": "~4.7.2",
+    "node-sass": "~4.5.3",
+    "postcss-cli": "~4.1.1",
+    "autoprefixer": "~7.1.5"
+  }
+}

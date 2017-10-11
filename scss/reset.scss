@@ -1,0 +1,20 @@
+/* === Meyer Reset & border box (in moderation) === */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: Arial;
+	font-size: 100%;
+	vertical-align: baseline;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+*, *:before, *:after{
+	box-sizing: inherit;	
+}
+
+a:link, a:visited, a:hover, a:active {
+	color: #000;
+}

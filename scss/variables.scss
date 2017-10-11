@@ -1,0 +1,57 @@
+
+/* Font import */
+
+@font-face {
+    font-family: DIN-Eng;
+    src: url('../fonts/DIN 1451 Std Engschrift.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: DIN-Mittel;
+    src: url('../fonts/DIN 1451 Std Mittelschrift.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Gill-Sans-Semibold;
+    src: url('../fonts/Gill Sans SemiBold.ttf') format('truetype');
+}
+
+/* Font variables */
+
+$font-gill-semibold: Gill-Sans-Semibold, sans-serif;
+$font-din-eng: DIN-Eng;
+$font-din-mittel: DIN-Mittel;
+
+
+/* Colours */
+
+/* black & *white* */
+/* $colour-background: #fff;
+$colour-type-main: #000;
+$colour-type-light: #ccc;
+$colour-type-medium: #999;
+$colour-node: #000;
+$colour-map-outline: #ccc;
+$colour-map-countries: #dcdcdc;
+$colour-highlight: #ff1493;
+ */
+
+/* *black* & white */
+$colour-background: #111;
+$colour-type-main: #ccc;
+$colour-type-light: #999;
+$colour-type-medium: #555;
+$colour-node: #fff;
+$colour-map-outline: #444;
+$colour-map-countries: #555;
+$colour-highlight: #ff1493;
+
+
+
+/* Breakpoints */
+
+$breakpoints: (
+  small: 400px,
+  med: 640px,
+  large: 900px,
+);

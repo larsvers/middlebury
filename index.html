@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>66</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 	<script src="node_modules/d3/build/d3.js"></script>
+ 	<script src="node_modules/d3-queue/build/d3-queue.min.js"></script>
+ 	<script src="node_modules/d3-scale-chromatic/build/d3-scale-chromatic.min.js"></script>
+ 	<script src="node_modules/d3-geo-projection/build/d3-geo-projection.min.js"></script>
+ 	<script src="node_modules/topojson/dist/topojson.min.js"></script>
+ 	<script src="node_modules/moment/min/moment.min.js"></script>
+
+	<link rel="stylesheet" href="css/main.css"> 
+	<link href="https://fonts.googleapis.com/css?family=Nunito|Nunito+Sans" rel="stylesheet">
+</head>
+<body>
+
+	<div id="container">
+
+		<div id="header">
+			<h1>66KINOS</h1>
+			<!-- <h4>eine reise durch die deutsche kinolandschaft</h4> -->
+		</div>
+		
+		<div id="controls">
+			<button id="button-cinema">kino a-z</button>
+			<button id="button-city">stadt a-z</button>
+			<button id="button-date">datum</button>
+			<button id="button-map">karte</button>
+			<button id="button-skip">skip</button>
+		</div>
+
+		<div id="content">
+
+			<div id="visual"></div>
+			<div id="context">
+
+				<h2 id="cinema-name"></h2>
+				<h3 id="cinema-city"></h3>
+				<div id="vimeo-player"></div>
+				<div id="cinema-info">
+
+					<h3 id="cinema-info-text"></h3>
+					<div id="cinema-info-adress"></div>
+					<div id="links">
+
+						<div id="cinema-info-link">
+							<a href="" target="_blank"></a>
+						</div>
+						<div id="cinema-map-link">
+							<a href="" target="_blank"></a>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>			
+
+		</div>
+
+		<div id="footer"></div>
+
+	</div>
+
+	<script src="js/main.js"></script>
+
+</body>
+</html>

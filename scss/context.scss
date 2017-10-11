@@ -1,0 +1,35 @@
+
+/* Context */
+/* ------- */
+
+h2, h3, #vimeo-player, #cinema-info-adress, #links {
+	margin: 0.3rem 0.5rem;
+}
+
+#cinema-city {
+	margin-top: 0;
+	margin-bottom: 0.7em;
+}
+
+#cinema-info-adress a {
+	color: $colour-type-main;
+	text-decoration: none;
+}
+
+#links div {
+	padding: 0;
+	margin-right: 0.5em;
+}
+#links a {
+	color: $colour-type-main;
+	text-decoration: none;
+	padding: 0 0 0.3em 0;
+	border-bottom: 1px solid $colour-type-main;
+	transition: all 250ms;
+}
+
+#links a:hover {
+	color: $colour-highlight;
+	border-color: $colour-highlight;
+}
+
