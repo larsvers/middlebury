@@ -1,0 +1,88 @@
+/* === Meyer Reset & border box (in moderation) === */
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: Arial;
+  font-size: 100%;
+  vertical-align: baseline;
+  height: 100%;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+a:link, a:visited, a:hover, a:active {
+  color: #000; }
+
+/* Font import */
+@font-face {
+  font-family: DIN-Eng;
+  src: url("../fonts/DIN 1451 Std Engschrift.ttf") format("truetype"); }
+
+@font-face {
+  font-family: DIN-Mittel;
+  src: url("../fonts/DIN 1451 Std Mittelschrift.ttf") format("truetype"); }
+
+/* Font variables */
+/* Colours */
+/* black & *white* */
+/* Breakpoints */
+/* General */
+/* ------- */
+body {
+  font-family: DIN-Mittel;
+  background: #fff;
+  color: #000; }
+
+/* Structure */
+/* --------- */
+#header, #controls, #footer, #vis-pack-map-wrap {
+  display: flex; }
+
+#vis-container {
+  display: flex;
+  flex-direction: column; }
+
+#header, #controls {
+  justify-content: center; }
+
+#header {
+  align-items: center; }
+
+/* Dimensions */
+/* ---------- */
+#header {
+  border: 1px solid #ccc;
+  width: 100vw;
+  height: 10vh; }
+
+#controls {
+  border: 1px solid #ccc;
+  width: 100vw;
+  height: 3vh; }
+
+#vis-container {
+  border: 1px solid #ccc;
+  width: 100vw;
+  height: 80vh; }
+
+#vis-pack-map-wrap {
+  border: 1px solid #ccc;
+  width: 100vw;
+  height: 60vh; }
+
+#vis-pack, #vis-map {
+  border: 1px solid #ccc;
+  width: 50vw;
+  height: 60vh; }
+
+#vis-bar {
+  border: 1px solid #ccc;
+  width: 100vw;
+  height: 20vh; }
+
+#footer {
+  border: 1px solid #ccc;
+  width: 100vw;
+  height: 6vh; }

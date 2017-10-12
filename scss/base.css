@@ -1,88 +1,79 @@
-/* Debug */
-/* ----- */
-
-div {
-	/* border: 1px solid steelblue; */
-}
-
-h1, h2, h3 {
-	/* border:  1px solid tomato; */
-}
-
 
 /* General */
 /* ------- */
 
 body {
-	/* font-family: Montserrat, sans-serif; */
-	/* font-family: $font-gill-semibold; */
 	font-family: $font-din-mittel;
 	background: $colour-background;
 	color: $colour-type-main;
-}
-
-#header h1 {
-	/* margin-left: 1rem; */
-}
-
-#header h4 {
-	margin-left: 0.5rem;
-	color: $colour-type-light;
-}
-
-
-/* Dimensions */
-/* ---------- */
-
-#header {
-	/* border: 1px solid #ccc; */
-	width: 60vw;
-	height: 10vh;
-}
-
-#controls {
-	/* border: 1px solid #ccc; */
-	width: 60vw;
-	height: 3vh;
-}
-
-#visual {
-	/* border: 1px solid #ccc; */
-	width: 60vw;
-	height: 80vh;
-}
-
-#context {
-	/* border: 1px solid #ccc; */
-	width: 40vw;
-	height: 80vh;
-}
-
-#footer {
-	/* border: 1px solid #ccc; */
-	width: 100vw;
-	height: 6vh;
 }
 
 
 /* Structure */
 /* --------- */
 
-#header, #controls, #footer, #content, #links {
+#header, #controls, #footer, #vis-pack-map-wrap {
 	display: flex;
 }
 
-#context, #cinema-info {
+#vis-container {
 	display: flex;
 	flex-direction: column;
 }
 
 #header, #controls {
 	justify-content: center;
-
 }
 
 #header {
 	align-items: center;
 }
+
+
+
+/* Dimensions */
+/* ---------- */
+
+#header {
+	border: 1px solid #ccc;
+	width: 100vw;
+	height: 10vh;
+}
+
+#controls {
+	border: 1px solid #ccc;
+	width: 100vw;
+	height: 3vh;
+}
+
+#vis-container {
+	border: 1px solid #ccc;
+	width: 100vw;
+	height: 80vh;
+}
+
+#vis-pack-map-wrap {
+	border: 1px solid #ccc;
+	width: 100vw;
+	height: 60vh;
+}
+
+#vis-pack, #vis-map {
+	border: 1px solid #ccc;
+	width: 50vw;
+	height: 60vh;
+}
+
+#vis-bar {
+	border: 1px solid #ccc;
+	width: 100vw;
+	height: 20vh;
+}
+
+#footer {
+	border: 1px solid #ccc;
+	width: 100vw;
+	height: 6vh;
+}
+
 

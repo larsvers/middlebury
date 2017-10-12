@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "live-server --open=index.html",
     "lint": "eslint main.js",
-    "sass": "node-sass -w main.scss main.css",
+    "sass": "node-sass -w scss/main.scss css/main.css",
     "autoprefix": "postcss --use autoprefixer --replace css/*"
   },
   "author": "LV",
