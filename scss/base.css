@@ -12,7 +12,7 @@ body {
 /* Structure */
 /* --------- */
 
-#header, #controls, #footer, #vis-pack-map-wrap {
+#header, #controls, #footer {
 	display: flex;
 }
 
@@ -52,19 +52,13 @@ body {
 	height: 80vh;
 }
 
-#vis-pack-map-wrap {
+#vis-main {
 	border: 1px solid #ccc;
 	width: 100vw;
 	height: 60vh;
 }
 
-#vis-pack, #vis-map {
-	border: 1px solid #ccc;
-	width: 50vw;
-	height: 60vh;
-}
-
-#vis-bar {
+#vis-sub {
 	border: 1px solid #ccc;
 	width: 100vw;
 	height: 20vh;

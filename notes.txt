@@ -1,0 +1,25 @@
+Data
+----
+
+1) we can load in the data as JSON
+2) then send it through the pack layout 
+
+* for the map and the bars we only use the nodes * without * children
+* all nodes * with * children only manifest in the circle packing and can trun turn opaque or the like for the map
+
+
+
+Problem 1
+---------
+
+Problem: nodes don't transition back from circle pack to map simulation
+
+Area: positionMap() positionPack()
+
+Hypothesis: it seems when kicking off the second map simulation that the simulation thinks the nodes are already at their final positions. 
+Seems I need to check where x y is before the first map simulation and where x y are before the second map simulation.
+
+Fix: Before the second+ map positioning (positionMap()) set the x and y properties to the current circle packing positions.
+As we don't simulate from map to circle-pack, but transition, the x and y properties (which get changed in the tick function)
+remain on the last map position. Hence a newly triggered simulation just simulates them from the final map position to the 
+final map position.
