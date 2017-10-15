@@ -8,8 +8,10 @@ var vis = vis || {};
 vis.data;
 vis.radiusMeasure;
 vis.pack = {};
-vis.dims = { radius: 2, padding: 1 };
+vis.dims = { radius: 2, padding: 1};
+vis.dimsContext = {};
 vis.svg;
+vis.svgContext;
 vis.scale = { colour: undefined, r: undefined};
 vis.geo = {};
 vis.sim;
@@ -122,8 +124,8 @@ function layoutPackData(data, measure) {
 } // layoutPackData()
 
 function drawPack(data) {
-	
-	var circles = vis.svg.append('g').attr('id', 'pack-g')
+
+	var circles = vis.svg.append('g').attr('id', 'nodes-g')
 			.selectAll('.node')
 			.data(data, function(d) { return d.id; });
 
@@ -142,7 +144,6 @@ function drawPack(data) {
 	circles.exit().transition().attr('r', 0).remove()
 
 } // drawPack()
-
 
 
 /* Map */
@@ -174,7 +175,7 @@ function setupMap(geo) {
 
 function drawMap(data) {
 
-	vis.svg.append('g').attr('id', 'map-g')
+	vis.svg.insert('g', ':first-child').attr('id', 'map-g')
 		.append('path')
 		.datum(data)
 		.attr('d', vis.geo.path)
@@ -223,6 +224,35 @@ function mapSimulation() {
 } // mapSimulation()
 
 
+function setupContext() {
+
+	// Dimensions
+  var container = d3.select('#vis-context').node().getBoundingClientRect();
+
+  var margin = { top: 10 , right: 30 , bottom: 10 , left: 30 },
+      width = container.width - margin.left - margin.right,
+      height = container.height - margin.top - margin.bottom;
+
+  // SVG
+  var svg = d3.select('#vis-context')
+    .append('svg')
+      .attr('width', '100%')
+      .attr('height', '100%')
+      .attr('viewBox', '0 0 ' + container.width + ' ' + container.height)
+    .append('g').attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')') // to translate
+    .append('g').attr('class', 'context-chart-g'); // to base zoom on a 0, 0 coordinate system
+
+  // Add to global
+  vis.dimsContext.width = width;
+  vis.dimsContext.height = height;
+  vis.dimsContext.margin = margin;
+  vis.svgContext = svg;
+
+}
+
+
+
+
 /* Handler */
 /* ------- */
 
@@ -266,7 +296,7 @@ function ready(error, data, world) {
 
 	getPack(vis.data);
 
-	vis.radiusMeasure = 'operating_weeks';
+	vis.radiusMeasure = 'participating';
 
 	layoutPackData(vis.data, vis.radiusMeasure);
 
@@ -286,6 +316,11 @@ function ready(error, data, world) {
 	setRadiusScale(vis.radiusMeasure);
 
 	drawMap(vis.geo.countries);
+
+	/* Context */
+	/* ------- */
+
+	setupContext();
 
 
 
