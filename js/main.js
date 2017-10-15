@@ -12,13 +12,19 @@ vis.dims = { radius: 2, padding: 1};
 vis.dimsContext = {};
 vis.svg;
 vis.svgContext;
-vis.scale = { colour: undefined, r: undefined};
+vis.scale = { colour: undefined, r: undefined, contextY: undefined, contextX: undefined };
 vis.geo = {};
 vis.sim;
 
 
 /* Helpers */
 /* ------- */
+
+function escapeString(string) {
+
+	return string.replace(/[^\w]/gi, '').toLowerCase();
+
+} // escapeString()
 
 function setColourScale(measure) {
 
@@ -27,7 +33,7 @@ function setColourScale(measure) {
 	}).reduce(function(a, b) {
 		if (a.indexOf(b.data[measure]) < 0) a.push(b.data[measure]);
 		return a;
-	}, [])
+	}, []);
 
 	// var colScale = d3.scaleOrdinal(d3.schemeSet3).domain(domain);
 	var colScale = d3.scaleOrdinal().domain(domain).range(['#0086DC', '#FF7956', '#5A9700', '#9C237D', '#E6AA00', '#532F0C', '#aaa']);
@@ -224,12 +230,15 @@ function mapSimulation() {
 } // mapSimulation()
 
 
+/* Context */
+/* ------- */
+
 function setupContext() {
 
 	// Dimensions
   var container = d3.select('#vis-context').node().getBoundingClientRect();
 
-  var margin = { top: 10 , right: 30 , bottom: 10 , left: 30 },
+  var margin = { top: 20 , right: 30 , bottom: 20 , left: 50 },
       width = container.width - margin.left - margin.right,
       height = container.height - margin.top - margin.bottom;
 
@@ -248,10 +257,90 @@ function setupContext() {
   vis.dimsContext.margin = margin;
   vis.svgContext = svg;
 
-}
+} // setupContext()
+
+function initContextScales() {
+
+	// Only leaf nodes
+	var data = vis.pack.nodes.filter(function(el) { return !el.children; });
+
+	// y Extent
+	var yExtent = d3.extent(data, function(d) { return d.data.participating; });
+
+	// y Scale
+	var yScale = d3.scaleLinear().domain(yExtent).range([vis.dimsContext.height, 0]);
+
+	// x Extent (unique entries of x measure)
+	var xDomain = data.reduce(function(a, b) {
+		if (a.indexOf(b.data.unit_long) < 0) a.push(b.data.unit_long);
+		return a;
+	}, []);
+
+	// x Scale
+	var xScale = d3.scaleBand().domain(xDomain).range([0, vis.dimsContext.width]).padding(0.2);
+
+	// Globals
+	vis.scale.contextY = yScale;
+	vis.scale.contextX = xScale;
+
+} // initContextScales()
 
 
+function initContextAxes() {
 
+	// Components
+	var xAxis = d3.axisBottom(vis.scale.contextX).tickSizeOuter(0);
+	var yAxis = d3.axisLeft(vis.scale.contextY).tickSizeOuter(0);
+
+	// Draw
+	vis.svgContext.append('g')
+			.attr('class', 'x axis')
+			.attr('transform', 'translate(' + 0 + ', ' + vis.dimsContext.height + ')')
+			.call(xAxis);
+
+	vis.svgContext.append('g')
+			.attr('class', 'y axis')
+			.attr('transform', 'translate(' + 0 + ', ' + 0 + ')')
+			.call(yAxis);
+
+	d3.selectAll('.y.tick text').attr('transform', 'rotate(-35)')
+
+} // initContextAxes()
+
+
+function initBarG() {
+
+	vis.svgContext.append('g').attr('id', 'bar-g')
+
+} // initBarG()
+
+
+function drawContext(data, measure) {
+
+	var newData = data
+		.filter(function(el) { return !el.children; })
+		.sort(function(a, b) {
+			return d3.descending(a.data[measure], b.data[measure])
+		});
+
+	var bar = d3.select('#bar-g').selectAll('.bar')
+		.data(newData, function(d) { return d.id; });
+
+	var barEnter = bar.enter().append('rect')
+		.merge(bar)
+			.attr('class', 'bar')
+			.attr('id', function(d) { return escapeString(d.data.unit_long); })
+			.attr('x', function(d) { return vis.scale.contextX(d.data.unit_long); })
+			.attr('y', function(d) { return vis.scale.contextY(d.data[measure]); })
+			.attr('width', vis.scale.contextX.bandwidth())
+			.attr('height', function(d) { return vis.scale.contextY(0) - vis.scale.contextY(d.data[measure]); })
+			.attr('rx', 1)
+			.attr('ry', 1)
+			.style('fill', function(d) { return vis.scale.colour(d.data.school); });
+
+	bar.exit().style('opacity', 0).remove();
+
+} // drawContext()
 
 /* Handler */
 /* ------- */
@@ -322,6 +411,13 @@ function ready(error, data, world) {
 
 	setupContext();
 
+	initContextScales();
+
+	initContextAxes();
+
+	initBarG();
+
+	drawContext(vis.pack.nodes, 'participating')
 
 
 
@@ -332,6 +428,17 @@ d3.select('#two').on('mousedown', positionPack);
 
 
 } // ready()
+
+
+
+	// // Only leaf nodes
+	// var data = vis.pack.nodes.filter(function(el) { return !el.children; });
+
+	// 	// Extents
+	// var partExt = d3.extent(data, function(d) { return d.participating; });
+	// var operExt = d3.extent(data, function(d) { return d.operating_weeks; });
+	// var yearExt = d3.extent(data, function(d) { return moment(d.year_began); });
+
 
 
 

@@ -1,0 +1,26 @@
+/* Context */
+/* ======= */
+
+/* Axes */
+/* ---- */
+
+
+.tick text {
+  font-size: 10px;
+  fill: $colour-type-medium;
+  font-family: $font-nunito-sans;
+  text-anchor: end;
+}
+
+.x text {
+	fill: none;
+}
+
+.tick line, .axis path {
+  stroke: $colour-type-light;
+  shape-rendering: crispEdges;
+}
+
+.x .tick line {
+	stroke-width: 0;
+}

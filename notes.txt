@@ -8,6 +8,16 @@ Data
 * all nodes * with * children only manifest in the circle packing and can trun turn opaque or the like for the map
 
 
+Chaneg notes
+------------
+Data clean:
+ * Some entries w/o lng/lat
+ * Some entries seem to be aggregates (CV Starr 36 schools in 16 countries)
+
+Interaction:
+ * Makes potentially sense to allow circle sizes to encode different variables
+ * The context view should be able to show binary variables too
+
 
 Problem 1
 ---------
@@ -23,3 +33,73 @@ Fix: Before the second+ map positioning (positionMap()) set the x and y properti
 As we don't simulate from map to circle-pack, but transition, the x and y properties (which get changed in the tick function)
 remain on the last map position. Hence a newly triggered simulation just simulates them from the final map position to the 
 final map position.
+
+
+Feature 2
+---------
+
+Main Feature: set up lower chart
+
+Description:
+ 3 different bars:
+ 2 linear y, categorical x
+ 1 no y, time x
+
+Function structure:
+
+ 1) set up svg/g
+ 2) calculate scales in function(s)
+ 3) draw axes
+
+ 4) draw the visual function including:
+ 		* calculate extents
+ 		* set domain
+ 		* update axes
+ 		* lifecycle
+
+
+
+TODO
+
+x Initialise the visual with participating
+
+* on button click
+	- calculate extent 
+	- update scale 
+	- update axis
+	- update bars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -37,7 +37,7 @@ body {
 
 /* Structure */
 /* --------- */
-#header, #controls, #footer {
+#header, #controls, #vis-context-controls {
   display: flex; }
 
 #vis-container {
@@ -65,19 +65,39 @@ body {
 #vis-container {
   border: 1px solid #ccc;
   width: 100vw;
-  height: 80vh; }
+  height: 85vh; }
 
 #vis-main {
   border: 1px solid #ccc;
   width: 100vw;
   height: 60vh; }
 
+#vis-context-controls {
+  border: 1px solid #ccc;
+  width: 100vw;
+  height: 2vh; }
+
 #vis-context {
   border: 1px solid #ccc;
   width: 100vw;
-  height: 20vh; }
+  height: 23vh; }
 
-#footer {
-  border: 1px solid #ccc;
-  width: 100vw;
-  height: 6vh; }
+/* Context */
+/* ======= */
+/* Axes */
+/* ---- */
+.tick text {
+  font-size: 10px;
+  fill: #999;
+  font-family: "Nunito Sans", sans-serif;
+  text-anchor: end; }
+
+.x text {
+  fill: none; }
+
+.tick line, .axis path {
+  stroke: #ccc;
+  shape-rendering: crispEdges; }
+
+.x .tick line {
+  stroke-width: 0; }
