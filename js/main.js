@@ -323,6 +323,9 @@ function drawContext(data, measure) {
 			return d3.descending(a.data[measure], b.data[measure])
 		});
 
+
+	vis.scale.contextX.domain(newData.map(function(el) { return el.data.unit_long; }));
+
 	var bar = d3.select('#bar-g').selectAll('.bar')
 		.data(newData, function(d) { return d.id; });
 
