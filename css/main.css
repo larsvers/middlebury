@@ -44,7 +44,7 @@ body {
   display: flex;
   flex-direction: column; }
 
-#header, #controls {
+#header, #controls, #vis-context-controls {
   justify-content: center; }
 
 #header {

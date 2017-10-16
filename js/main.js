@@ -15,6 +15,7 @@ vis.svgContext;
 vis.scale = { colour: undefined, r: undefined, contextY: undefined, contextX: undefined };
 vis.geo = {};
 vis.sim;
+vis.axis =  { contextX: undefined, contextY: undefined };
 
 
 /* Helpers */
@@ -238,7 +239,7 @@ function setupContext() {
 	// Dimensions
   var container = d3.select('#vis-context').node().getBoundingClientRect();
 
-  var margin = { top: 20 , right: 30 , bottom: 20 , left: 50 },
+  var margin = { top: 20 , right: 30 , bottom: 30 , left: 50 },
       width = container.width - margin.left - margin.right,
       height = container.height - margin.top - margin.bottom;
 
@@ -289,19 +290,19 @@ function initContextScales() {
 function initContextAxes() {
 
 	// Components
-	var xAxis = d3.axisBottom(vis.scale.contextX).tickSizeOuter(0);
-	var yAxis = d3.axisLeft(vis.scale.contextY).tickSizeOuter(0);
+	vis.axis.contextX = d3.axisBottom(vis.scale.contextX).tickSizeOuter(0);
+	vis.axis.contextY = d3.axisLeft(vis.scale.contextY).tickSizeOuter(0);
 
 	// Draw
 	vis.svgContext.append('g')
 			.attr('class', 'x axis')
 			.attr('transform', 'translate(' + 0 + ', ' + vis.dimsContext.height + ')')
-			.call(xAxis);
+			.call(vis.axis.contextX);
 
 	vis.svgContext.append('g')
 			.attr('class', 'y axis')
 			.attr('transform', 'translate(' + 0 + ', ' + 0 + ')')
-			.call(yAxis);
+			.call(vis.axis.contextY);
 
 	d3.selectAll('.y.tick text').attr('transform', 'rotate(-35)')
 
@@ -315,64 +316,99 @@ function initBarG() {
 } // initBarG()
 
 
+function prepContextData() {
+
+	var data,
+			yMeasure,
+			sortBy;
+
+	function my() {
+
+		// get new data
+		var newData = data
+			.filter(function(el) { return !el.children; })
+			.sort(function(a, b) {
+				return d3.descending(a.data[sortBy], b.data[sortBy]) || d3.descending(a.data[yMeasure], b.data[yMeasure]); // http://bit.ly/2ysKXb6
+			});
+
+		// set x scale
+		vis.scale.contextX.domain(newData.map(function(el) { return el.data.unit_long; }));
+
+		// set y extent
+		var yMax = d3.max(newData, function(d) { return d.data[yMeasure] });
+
+		// set y scale
+		vis.scale.contextY.domain([0, yMax]);
+
+		return newData;
+
+	} // my()
+
+	my.data = function(_) {
+		if (!arguments.length) return data;
+		data = _;
+		return my;
+	};
+
+	my.yMeasure = function(_) {
+		if (!arguments.length) return yMeasure;
+		yMeasure = _;
+		return my;
+	};
+
+	my.sortBy = function(_) {
+		if (!arguments.length) return sortBy;
+		sortBy = _;
+		return my;
+	};
+
+	return my;
+
+} // prepContextData()
+
 function drawContext(data, measure) {
 
-	var newData = data
-		.filter(function(el) { return !el.children; })
-		.sort(function(a, b) {
-			return d3.descending(a.data[measure], b.data[measure])
-		});
+	// update scales and axes
+	vis.axis.contextX.scale(vis.scale.contextX);
+	vis.axis.contextY.scale(vis.scale.contextY);
 
+	d3.select('.x.axis').transition().call(vis.axis.contextX);
+	d3.select('.y.axis').transition().call(vis.axis.contextY);
 
-	vis.scale.contextX.domain(newData.map(function(el) { return el.data.unit_long; }));
-
+	// update the bars
 	var bar = d3.select('#bar-g').selectAll('.bar')
-		.data(newData, function(d) { return d.id; });
+		.data(data, function(d) { return d.id; });
 
+	// enter the bars (note: no merge)
 	var barEnter = bar.enter().append('rect')
-		.merge(bar)
 			.attr('class', 'bar')
 			.attr('id', function(d) { return escapeString(d.data.unit_long); })
 			.attr('x', function(d) { return vis.scale.contextX(d.data.unit_long); })
-			.attr('y', function(d) { return vis.scale.contextY(d.data[measure]); })
 			.attr('width', vis.scale.contextX.bandwidth())
-			.attr('height', function(d) { return vis.scale.contextY(0) - vis.scale.contextY(d.data[measure]); })
 			.attr('rx', 1)
 			.attr('ry', 1)
-			.style('fill', function(d) { return vis.scale.colour(d.data.school); });
+			.style('fill', function(d) { return vis.scale.colour(d.data.school); })
+			.attr('y', function(d) { return vis.scale.contextY(0); })
+			.attr('height', function(d) {  return vis.scale.contextY(0) - vis.scale.contextY(0) })
+		.transition().duration(1000)
+			.attr('y', function(d) { return vis.scale.contextY(d.data[measure]); })
+			.attr('height', function(d) { return vis.scale.contextY(0) - vis.scale.contextY(d.data[measure]); });
 
+	// update transition
+	bar.transition().duration(1000).delay(function(d, i) { return i * 10; })
+			.attr('y', function(d) { return vis.scale.contextY(d.data[measure]); })
+			.attr('height', function(d) { return vis.scale.contextY(0) - vis.scale.contextY(d.data[measure]); })
+			.attr('x', function(d) { return vis.scale.contextX(d.data.unit_long); })
+
+	// exit
 	bar.exit().style('opacity', 0).remove();
 
 } // drawContext()
 
-/* Handler */
-/* ------- */
-
-function positionMap() {
-
-	// Only leave nodes
-	var nodes = vis.pack.nodes.filter(function(el) { return !el.children; });
-
-	// shrink circles
-	setRadii(false);
-
-	// Move to map
-	!vis.sim ? initMapSimulation(nodes) : mapSimulation();
-
-} // positionMap()
-
-function positionPack() {
-
-	vis.sim.stop();
-
-	d3.selectAll('.node')
-		.transition().duration(1000)
-			.attr('r', function(d) { return d.r; })
-			.attr('transform', function(d) { return 'translate(' + d.xPack + ', ' + d.yPack + ')'});
-
-} // positionPack
 
 
+/* Initial sequence on load */
+/* ------------------------ */
 
 function ready(error, data, world) {
 	if (error) throw error;
@@ -409,8 +445,8 @@ function ready(error, data, world) {
 
 	drawMap(vis.geo.countries);
 
-	/* Context */
-	/* ------- */
+	/* Initial context */
+	/* --------------- */
 
 	setupContext();
 
@@ -420,15 +456,29 @@ function ready(error, data, world) {
 
 	initBarG();
 
-	drawContext(vis.pack.nodes, 'participating')
+	// prep data
+	var dataPrepConfig = prepContextData()
+			.data(vis.pack.nodes)
+			.yMeasure('participating')
+			.sortBy('participating');
 
+	var newData = dataPrepConfig();
 
+	// draw it
+	drawContext(newData, 'participating');
 
-d3.select('#one').on('mousedown', positionMap); 
-d3.select('#two').on('mousedown', positionPack); 
+	/* Listener */
+	/* -------- */
 
-
-
+	// Main visual listeners
+	d3.select('#btn-map').on('mousedown', positionMap); 
+	d3.select('#btn-pack').on('mousedown', positionPack); 
+	
+	// Context visual listeners
+	d3.select('#btn-students').on('mousedown', students)
+	d3.select('#btn-students-by-school').on('mousedown', studentsBySchool)
+	d3.select('#btn-oper').on('mousedown', weeks)
+	d3.select('#btn-oper-by-school').on('mousedown', weeksBySchool)
 
 } // ready()
 
@@ -444,9 +494,95 @@ d3.select('#two').on('mousedown', positionPack);
 
 
 
+/* Handler */
+/* ------- */
+
+/* -- Main visual -- */
+
+function positionMap() {
+
+	// Only leave nodes
+	var nodes = vis.pack.nodes.filter(function(el) { return !el.children; });
+
+	// shrink circles
+	setRadii(false);
+
+	// Move to map
+	!vis.sim ? initMapSimulation(nodes) : mapSimulation();
+
+} // positionMap()
+
+function positionPack() {
+
+	vis.sim.stop();
+
+	d3.selectAll('.node')
+		.transition().duration(1000)
+			.attr('r', function(d) { return d.r; })
+			.attr('transform', function(d) { return 'translate(' + d.xPack + ', ' + d.yPack + ')'});
+
+} // positionPack
+
+
+/* -- Context visual -- */
+
+function students() {
+
+	var dataPrepConfig = prepContextData()
+			.data(vis.pack.nodes)
+			.yMeasure('participating')
+			.sortBy('participating');
+
+	var newData = dataPrepConfig();
+
+	drawContext(newData, 'participating');
+
+} // students()
+
+function studentsBySchool() {
+
+	var dataPrepConfig = prepContextData()
+			.data(vis.pack.nodes)
+			.yMeasure('participating')
+			.sortBy('school');
+
+	var newData = dataPrepConfig();
+
+	drawContext(newData, 'participating');
+
+} // studentsBySchool()
+
+function weeks() {
+
+	var dataPrepConfig = prepContextData()
+			.data(vis.pack.nodes)
+			.yMeasure('operating_weeks')
+			.sortBy('operating_weeks');
+
+	var newData = dataPrepConfig();
+
+	drawContext(newData, 'operating_weeks');
+
+} // weeks()
+
+function weeksBySchool() {
+
+	var dataPrepConfig = prepContextData()
+			.data(vis.pack.nodes)
+			.yMeasure('operating_weeks')
+			.sortBy('school');
+
+	var newData = dataPrepConfig();
+
+	drawContext(newData, 'operating_weeks');
+
+} // weeksBySchool()
 
 
 
+
+/* Load data */
+/* --------- */
 
 d3.queue()
 		.defer(d3.json, '../data/nested-data.json')
