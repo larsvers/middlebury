@@ -583,7 +583,7 @@ function buildLegend() {
 
 		// add circle and text
 		legendGroup.append('circle')
-				.attr('r', 5)
+				.attr('r', 3)
 				.style('fill', function(d) { return d.colour; });
 
 		legendGroup.append('text')
