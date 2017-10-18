@@ -1025,6 +1025,6 @@ function zoomed() {
 /* ========= */
 
 d3.queue()
-		.defer(d3.json, '../data/nested-data.json')
-		.defer(d3.json, '../data/world-110m.json')
+		.defer(d3.json, 'data/nested-data.json')
+		.defer(d3.json, 'data/world-110m.json')
 		.await(ready);
