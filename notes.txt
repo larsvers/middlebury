@@ -13,6 +13,7 @@ Chaneg notes
 Data clean:
  * Some entries w/o lng/lat
  * Some entries seem to be aggregates (CV Starr 36 schools in 16 countries)
+ * I left all notes in there, although in a production environment I wouldve spent more time on sensible removal (no lat/lng, no students/umbrealla schools, etc.)
 
 Interaction:
  * Makes potentially sense to allow circle sizes to encode different variables
@@ -77,13 +78,38 @@ So what you have to do is re-map the newly sorted domain to the range.
 TODO
 ----
 
-* null map nodes
-* tooltip
-* zoom
-* legend
+x null map nodes
+	if map then null nodes no fill
+	if not map then null nodes fill
+x decrease background inner radial 
+x zoom
+x subtitle
+x legend
+	- let the context take a little more space
+	- increase the top margin
+	_ build legend
+
+
+* interactivity
+
+1 tooltip
+	- listening elements: 
+		* nodes
+		* bars
+	- tooltip showing: 
+		* (see drawing)
+	- build tooltip as much as possible in html and set outer div to opacity 0
+	- control opacity by handler
+
+2 context marker
+	- get there after tooltip
+
+
+
 * timeline
-
-
+* revisit blue colors
+* notes
+* publish
 
 
 

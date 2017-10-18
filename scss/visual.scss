@@ -7,7 +7,7 @@
 
 .tick text {
   font-size: 10px;
-  fill: $colour-type-medium;
+  fill: $colour-type-minor;
   font-family: $font-nunito-sans;
   text-anchor: end;
 }
@@ -49,10 +49,10 @@
 button {
 	font-family: $font-nunito-sans;
 	font-size: 0.8em;
-	color: $colour-type-medium;
+	color: $colour-type-minor;
 	background: none;
 	border: none;
-	border-bottom: 1px dotted $colour-type-medium;
+	border-bottom: 1px dotted $colour-type-minor;
 	margin: 0 0.5rem;
 	padding: 0;
 	cursor: pointer;

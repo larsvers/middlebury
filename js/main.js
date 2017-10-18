@@ -16,6 +16,16 @@ vis.scale = { colour: undefined, r: undefined, contextY: undefined, contextX: un
 vis.geo = {};
 vis.sim;
 vis.axis =  { contextX: undefined, contextY: undefined };
+vis.colourMap = [
+	{ school: "Bread Loaf School of English", colour: "#8EA9E8" },
+	{ school: "Bread Loaf Writers' Conference", colour: "#485A8C" },
+	{ school: "C.V. Starr Schools Abroad", colour: "#79C9F6" },
+	{ school: "Middlebury College", colour: "#F6C280" },
+	{ school: "Middlebury IIS", colour: "#DED93B" },
+	{ school: "Middlebury Language Schools", colour: "#DB8721" },
+	{ school: "Middlebury School of the Env.", colour: "#AD74ED" }
+];
+
 
 
 /* Helpers */
@@ -89,6 +99,15 @@ function highlightButton(parentId, selection) {
 
 } // highlightButton()
 
+function hideGeoNullNodes(hide, selection) {
+
+	if (hide) {
+		selection.filter(function(d) { return d.data.lng === null; }).transition().style('opacity', 0).style('pointer-events', 'none');
+	} else {
+		selection.filter(function(d) { return d.data.lng === null; }).transition().style('opacity', 0).style('pointer-events', 'all');
+	}
+
+}
 
 /* General */
 /* ------- */
@@ -105,11 +124,20 @@ function setupVisual() {
   // SVG
   var svg = d3.select('#vis-main')
     .append('svg')
+      .attr('id', 'main-svg')
       .attr('width', '100%')
       .attr('height', '100%')
       .attr('viewBox', '0 0 ' + container.width + ' ' + container.height)
     .append('g').attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')') // to translate
-    .append('g').attr('class', 'chart-g'); // to base zoom on a 0, 0 coordinate system
+    .append('g').attr('id', 'chart-g'); // to base zoom on a 0, 0 coordinate system
+
+  // Set up zoom surface
+  var zoomSurface = d3.select('svg#main-svg').append('rect')
+  		.attr('id', 'zoom-surface')
+  		.attr('width', container.width)
+  		.attr('height', container.height)
+  		.style('opacity', 0)
+
 
   // Add to global
   vis.dims.width = width;
@@ -156,7 +184,8 @@ function drawPack(data) {
 
 	circles.enter().append('circle')
 		.merge(circles)
-			.attr('class', function(d) { return d.parent ? d.children ? 'node' : 'node node-leaf' : 'node node-root'})
+			.attr('class', function(d) { return d.parent ? d.children ? 'node' : 'node node-leaf' : 'node node-root'; })
+			.attr('id', function(d) { return d.data.id; })
 			.style('fill', function(d) { return d.children ? '#293e5a' : d.data.colour; })
 			.style('fill-opacity', function(d) { return d.parent ? d.children ? 0.9 : 1 : 0.4; })
 			.attr('transform', function(d) { 
@@ -201,7 +230,7 @@ function setupMap(geo) {
 
 function drawMap(data) {
 
-	vis.svg.insert('g', ':first-child').attr('id', 'map-g')
+	vis.svg.insert('g', '#nodes-g').attr('id', 'map-g')
 		.append('path')
 		.datum(data)
 		.attr('d', vis.geo.path);
@@ -257,13 +286,14 @@ function setupContext() {
 	// Dimensions
   var container = d3.select('#vis-context').node().getBoundingClientRect();
 
-  var margin = { top: 20 , right: 30 , bottom: 30 , left: 50 },
+  var margin = { top: 100 , right: 30 , bottom: 30 , left: 50 },
       width = container.width - margin.left - margin.right,
       height = container.height - margin.top - margin.bottom;
 
   // SVG
   var svg = d3.select('#vis-context')
     .append('svg')
+      .attr('id', 'context-svg')
       .attr('width', '100%')
       .attr('height', '100%')
       .attr('viewBox', '0 0 ' + container.width + ' ' + container.height)
@@ -401,7 +431,7 @@ function drawContext(data, measure) {
 	// enter the bars (note: no merge)
 	var barEnter = bar.enter().append('rect')
 			.attr('class', 'bar')
-			.attr('id', function(d) { return escapeString(d.data.unit_long); })
+			.attr('id', function(d) { return d.data.id; })
 			.attr('x', function(d) { return vis.scale.contextX(d.data.unit_long); })
 			.attr('width', vis.scale.contextX.bandwidth())
 			.attr('rx', 1)
@@ -424,6 +454,99 @@ function drawContext(data, measure) {
 
 } // drawContext()
 
+
+function configLegend() {
+
+
+	var legend = buildLegend()
+			.dims(vis.dimsContext)
+			.data(vis.colourMap);
+	
+	vis.svgContext.call(legend);
+
+} // configLegend()
+
+function buildLegend() {
+
+	var dims,
+			data;
+
+	function my(selection) {
+
+		/* Draw legend */
+		/* ----------- */
+
+		// Add g element
+		var gLegend = selection.insert('g', ':first-child')
+				.attr('id', 'legend-g');
+
+		// g per school
+		var legendGroup = gLegend.selectAll('.legend-group')
+			.data(data)
+			.enter().append('g')
+				.attr('class', 'legend-group');
+
+		// add circle and text
+		legendGroup.append('circle')
+				.attr('r', 5)
+				.style('fill', function(d) { return d.colour; });
+
+		legendGroup.append('text')
+				.attr('text-anchor', 'start')
+				.attr('dx', '0.75em')
+				.attr('dy', '0.35em')
+				.text(function(d) { return d.school; })
+				.style('font-size', '0.55vw') // make text size responsive
+				.style('fill', '#6b788e');
+
+
+		/* Position legend */
+		/* --------------- */
+
+		var groupWidths,
+				groupWidthsCum,
+				sum,
+				padding = 5;
+
+		// Each group's width
+		var groupWidths = [0]	
+		legendGroup.each(function(el) { groupWidths.push(this.getBBox().width + padding); });
+
+		// Cumulate widths to find positions
+		var groupWidthsCum = [];
+		groupWidths.reduce(function(prev, next, i) { return groupWidthsCum[i] = prev + next; }, 0);
+		groupWidthsCum.pop(); // remove last value - not needed
+
+		// Translate each group to its rightful position
+		legendGroup.each(function(el, i) { d3.select(this).attr('transform', 'translate(' + Math.floor(groupWidthsCum[i]) + ', 0)'); });
+
+		// Calculate x start of legend
+		gLegend.attr('transform', 'translate(' + (dims.width/2 - d3.sum(groupWidths)/2) + ', ' + -dims.margin.top/2 + ')')
+
+
+
+
+
+		// position markers
+
+
+	} // my()
+
+	my.dims = function(_) {
+		if (!arguments.length) return dims;
+		dims = _; 
+		return my;
+	};
+
+	my.data = function(_) {
+		if (!arguments.length) return data;
+		data = _; 
+		return my;
+	};
+
+	return my;
+
+} // buildLegend()
 
 
 /* Initial sequence on load */
@@ -490,6 +613,18 @@ function ready(error, data, world) {
 
 	highlightButton('vis-context-controls', d3.select('#btn-students'));
 
+
+
+	/* Legend */
+	/* ------ */
+
+	configLegend();
+
+
+
+
+
+
 	/* Listener */
 	/* -------- */
 
@@ -502,6 +637,16 @@ function ready(error, data, world) {
 	d3.select('#btn-students-by-school').on('mousedown', studentsBySchool)
 	d3.select('#btn-oper').on('mousedown', weeks)
 	d3.select('#btn-oper-by-school').on('mousedown', weeksBySchool)
+
+
+	/* Zoom */
+	/* ---- */
+
+	var zoom = d3.zoom().scaleExtent([0.66, 2.8]).on('zoom', zoomed);
+
+	d3.select('#zoom-surface').call(zoom);
+
+
 
 } // ready()
 
@@ -517,6 +662,9 @@ function ready(error, data, world) {
 
 
 
+
+
+
 /* Handler */
 /* ------- */
 
@@ -524,6 +672,7 @@ function ready(error, data, world) {
 
 function positionMap() {
 
+	// highlight button
 	highlightButton('controls', d3.select('#btn-map'));
 
 	// Only leave nodes
@@ -538,11 +687,19 @@ function positionMap() {
 	// Move to map
 	!vis.sim ? initMapSimulation(nodes) : mapSimulation();
 
+	// hide geo === null bubbles
+	hideGeoNullNodes(true, d3.selectAll('.node'));
+
+
 } // positionMap()
 
 function positionPack() {
 
+	// highlight button
 	highlightButton('controls', d3.select('#btn-pack'));
+
+	// show geo === null bubbles
+	hideGeoNullNodes(false, d3.selectAll('.node'));
 
 	// hide map
 	showMap(false)
@@ -619,6 +776,16 @@ function weeksBySchool() {
 
 } // weeksBySchool()
 
+
+/* -- Zoom -- */
+
+function zoomed() {
+
+	var transform = d3.event.transform;
+
+	d3.select('g#chart-g').attr('transform', transform.toString());
+
+} // zoom()
 
 
 

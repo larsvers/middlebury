@@ -10,25 +10,36 @@ body {
   background: radial-gradient($colour-background-radial-inner, $colour-background-radial-outer); /* Standard syntax */
 }
 
-#header {
+#header h1 {
 	font-family: $font-bembo;
 	letter-spacing: 2px;
 	color: $colour-type-main;
+	margin: 0.5em 0 0 0;
 }
+
 
 span#test {
 	font-family: $font-nunito-sans;
 	font-size: 0.8em;
 }
 
+#header h4 {
+	font-family: $font-nunito-sans;
+	margin: 0;
+	color: $colour-type-minor;
+	letter-spacing: 2px;
+	text-shadow: 0px 1px 1px #000;
+}
+
+
 /* Structure */
 /* --------- */
 
-#header, #controls, #vis-context-controls {
+#controls, #vis-context-controls {
 	display: flex;
 }
 
-#vis-container {
+#vis-container, #header {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -50,7 +61,7 @@ span#test {
 #header {
 	/* border: 1px solid #ccc; */
 	width: 100vw;
-	height: 10vh;
+	height: 9vh;
 }
 
 #controls {
@@ -68,19 +79,19 @@ span#test {
 #vis-main {
 	/* border: 1px solid #ccc; */
 	width: 60vw;
-	height: 60vh;
+	height: 57vh;
+}
+
+#vis-context {
+	/* border: 1px solid #ccc; */
+	width: 60vw;
+	height: 23vh;
 }
 
 #vis-context-controls {
 	/* border: 1px solid #ccc; */
 	width: 60vw;
 	height: 4vh;
-}
-
-#vis-context {
-	/* border: 1px solid #ccc; */
-	width: 60vw;
-	height: 20vh;
 }
 
 
