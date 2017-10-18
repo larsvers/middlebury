@@ -148,7 +148,7 @@ button.highlight-button {
   color: #0C2648;
   background: #fff;
   background: #e7edf7;
-  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+  border-radius: 1px;
   pointer-events: none;
   opacity: 0; }
 
@@ -177,6 +177,11 @@ button.highlight-button {
 
 #tip-body-image img {
   max-width: 100%; }
+
+.reduced {
+  font-size: 0.7em;
+  font-style: italic;
+  color: #707CA6; }
 
 /* Map */
 /* --- */

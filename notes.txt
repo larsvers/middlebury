@@ -88,11 +88,7 @@ x legend
 	- let the context take a little more space
 	- increase the top margin
 	_ build legend
-
-
-* interactivity
-
-1 tooltip
+x tooltip
 	- listening elements: 
 		* nodes
 		* bars
@@ -100,9 +96,7 @@ x legend
 		* (see drawing)
 	- build tooltip as much as possible in html and set outer div to opacity 0
 	- control opacity by handler
-
-2 context marker
-	- get there after tooltip
+	- show at top if mouse at bottom
 
 
 

@@ -175,8 +175,11 @@ function drawPack(data) {
 			.selectAll('.node')
 			.data(data, function(d) { return d.id; });
 
-	circles.enter().append('circle')
+	circles.enter().append('a')
 		.merge(circles)
+			.attr('href', function(d) { return d.data.url})
+			.attr('target', '_blank')
+		.append('circle')
 			.attr('class', function(d) { return d.parent ? d.children ? 'node' : 'node node-leaf' : 'node node-root'; })
 			.attr('id', function(d) { return d.data.id; })
 			.style('fill', function(d) { return d.children ? '#293e5a' : d.data.colour; })
@@ -422,7 +425,10 @@ function drawContext(data, measure) {
 		.data(data, function(d) { return d.id; });
 
 	// enter the bars (note: no merge)
-	var barEnter = bar.enter().append('rect')
+	var barEnter = bar.enter().append('a')
+			.attr('href', function(d) { return d.data.url; })
+			.attr('target', '_blank')
+		.append('rect')
 			.attr('class', 'bar')
 			.attr('id', function(d) { return d.data.id; })
 			.attr('x', function(d) { return vis.scale.contextX(d.data.unit_long); })
@@ -548,13 +554,13 @@ function buildLegend() {
 /* ------------- */
 
 
-function nodeInteraction() {
+function elementInteraction() {
 
 	// Select and keep in variable
 	var tip = d3.select('#tooltip');
 
 	// Listeners
-	d3.selectAll('.node-leaf')
+	d3.selectAll('.node-leaf, .bar')
 		.on('mouseover', mouseover)
 		.on('mousemove', mousemove)
 		.on('mouseout', mouseout);
@@ -563,77 +569,70 @@ function nodeInteraction() {
 	function mouseover(d) {
 
 		// Show and position
-		tip.transition().style('opacity', 1);
-		tip.style('top', d3.event.pageY + 'px')
+		
+		tip.transition().style('opacity', 0.98);
+		
+		// higher y position for bar interaction
+		var yPos = d3.select(this).classed('bar') ? d3.event.pageY - 300 : d3.event.pageY;
+		
+		tip.style('top', yPos + 'px')
 			.style('left', (d3.event.pageX + 20) + 'px');
 
 		// Write header
 		tip.select('#tip-header h2').html(d.data.school);
 		tip.select('#tip-header h4').html(d.data.unit);
 
-
 		// Write body
-
-		tip.select('#tip-describe').html(d.data.description);
+		tip.select('#tip-describe').html(d.data.description + '<br><span class="reduced">Click element to go to website</span>');
 
 		var list = 
-		'<p>Since ' + d.data.year_began + '</p>' + 
+		(d.data.year_began ? '<p>Since ' + d.data.year_began + '</p>' : '') + 
 		'<p>' + d.data.participating + ' students</p>' + 
+		(d.data.operating_weeks ? '<p>' + d.data.operating_weeks + ' weeks per year</p>' : '') +
 		'<p>Offers degree: ' + d.data.degree + '</p>' + 
-		'<p>Offers credit: ' + d.data.degree + '</p>' + 
-		'<p>' + d.data.operating_weeks + ' weeks per year</p>';
+		'<p>Offers credit: ' + d.data.degree + '</p>';
 
 		tip.select('#tip-body-text').html(list)
 
 		tip.select('#tip-body-image img').attr('src', d.data.image_url);
 
-
-
-
-
-/*
-          "description": "The Middlebury Bread Loaf School of English is a summer graduate school that brings together more than 425 students at our three campuses each summer.",
-          "year_began": 1999,
-          "degree": "yes",
-          "connections": null,
-          "connections_notes": null,
-          "url": "http://www.middlebury.edu/blse",
-          "credit": "yes",
-          "id": "BL1",
-          "image_url": "http://sandcat.middlebury.edu/palladio/newpalladio/thumbnails/Bread%20Loaf/BLSE%20MA%20ML.jpg",
-          "unit": "Master of Arts",
-          "school": "Bread Loaf School of English",
-          "unit_long": "Bread Loaf Master of Arts",
-          "lng": -73.0156,
-          "lat": 43.9817,
-          "participating": 425,
-          "operating_weeks": 8,
-          "location": "Bread Loaf, Vermont",
-          "colour": "#8EA9E8"
-*/
-
+		// highlight
+		d3.selectAll('#' + d.data.id)
+			.transition()
+				.style('stroke-width', 6)
+				.style('stroke', '#fff')
+			.transition()
+				.style('stroke-width', 4);
 
 	} // mouseover()
 
 	function mousemove(d) {
 
-		// Move along
-		tip.style('top', d3.event.pageY + 'px')
-			.style('left', (d3.event.pageX + 20) + 'px');
+		// higher y position for bar interaction
+		var yPos = d3.select(this).classed('bar') ? d3.event.pageY - 300 : d3.event.pageY;
 
+		// Move along
+		tip.style('top', yPos + 'px')
+			.style('left', (d3.event.pageX + 20) + 'px');
 
 	} // mousemove()
 
 	function mouseout(d) {
 
 		// Remove
-		tip.transition().style('opacity', 0);
+		tip.transition().style('opacity', 0)
+			.on('end', function() {
+				tip.select('#tip-body-image img').attr('src', '');
+			});
+
+		// de-highlight
+		d3.selectAll('#' + d.data.id)
+			.transition()
+				.style('stroke-width', 0);
 
 	} // mouseout()
 
-
-
-} // nodeInteraction()
+} // elementInteraction()
 
 
 
@@ -715,7 +714,7 @@ function ready(error, data, world) {
 	/* Interactivity */
 	/* ------------- */
 
-	nodeInteraction();
+	elementInteraction();
 
 
 
