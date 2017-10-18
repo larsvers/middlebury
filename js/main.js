@@ -881,6 +881,9 @@ function positionMap() {
 	// hide geo === null bubbles
 	hideGeoNullNodes(true, d3.selectAll('.node'));
 
+	// Add description in header
+	d3.select('#header h4').html('School location worldwide (zoom to focus)')
+
 } // positionMap()
 
 function positionPack() {
@@ -908,6 +911,9 @@ function positionPack() {
 				return 'translate(' + d.xPack + ', ' + d.yPack + ')'
 			});
 
+	// Add description in header
+	d3.select('#header h4').html('Number of students per school')
+
 } // positionPack
 
 function positionTime() {
@@ -932,6 +938,10 @@ function positionTime() {
 
 	// hide geo === null bubbles
 	hideGeoNullNodes(false, d3.selectAll('.node'));
+
+	// Add description in header
+	d3.select('#header h4').html('Timeline of school\'s founding years')
+
 
 } // positionMap()
 
