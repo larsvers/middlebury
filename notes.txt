@@ -58,19 +58,6 @@ Function structure:
  		* lifecycle
 
 
-
-TODO
-
-x Initialise the visual with participating
-
-* on button click
-	- calculate extent 
-	- update scale 
-	- update axis
-	- update bars
-
-
-
 Problem 2
 ---------
 
@@ -79,13 +66,22 @@ I wanted to sort it just according to the number of participants, but sorting th
 
 Hypothesis: I didn't really have many hypotheses, as I assumed all it needs is to sort the data and re-bind it to the update selection
 
-Fix: The scale domain needed to change. Why? Because it was an ordinal scale. I assume, the ordinal scale is deterministic for the values
+Fix: The scale domain needed to change. Why? Because it's an ordinal scale. I assume, the ordinal scale is deterministic for the values
 in that the scale decides the very positioning of the values. So if you have a domain saying [a, b, c] and you map it to [0, 10, 20]
 then that is gospel. Howver your data is sorted (for example [c, b, a]) a will always get mapped to 0, b to 10 and c to 20.
 So what you have to do is re-map the newly sorted domain to the range.
 
 
 
+
+TODO
+----
+
+* null map nodes
+* tooltip
+* zoom
+* legend
+* timeline
 
 
 

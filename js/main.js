@@ -72,6 +72,24 @@ function setRadii(unitSize) {
 } // setRadii()
 
 
+function showMap(show) {
+
+  if (show) {
+    d3.select('#map-g').transition().duration(500).style('opacity', 1);
+  } else {
+    d3.select('#map-g').transition().duration(500).style('opacity', 0);
+  }
+
+} // showMap()
+
+function highlightButton(parentId, selection) {
+
+  d3.selectAll('#' + parentId + ' button').classed('highlight-button', false);
+  selection.classed('highlight-button', true);
+
+} // highlightButton()
+
+
 /* General */
 /* ------- */
 
@@ -139,7 +157,8 @@ function drawPack(data) {
 	circles.enter().append('circle')
 		.merge(circles)
 			.attr('class', function(d) { return d.parent ? d.children ? 'node' : 'node node-leaf' : 'node node-root'})
-			.style('fill', function(d) { return d.parent ? d.children ? '#e7e7e7' : vis.scale.colour(d.data.school) : '#f3f3f3'; })
+			.style('fill', function(d) { return d.children ? '#293e5a' : d.data.colour; })
+			.style('fill-opacity', function(d) { return d.parent ? d.children ? 0.9 : 1 : 0.4; })
 			.attr('transform', function(d) { 
 				d.xPack = d.x; // augment data with pack positions...
 				d.yPack = d.y;
@@ -185,10 +204,9 @@ function drawMap(data) {
 	vis.svg.insert('g', ':first-child').attr('id', 'map-g')
 		.append('path')
 		.datum(data)
-		.attr('d', vis.geo.path)
-		.attr('stroke-width', 1)
-		.attr('stroke', '#ccc')
-		.attr('fill-opacity', 0);
+		.attr('d', vis.geo.path);
+
+	d3.select('#map-g').style('opacity', 0);
 
 } // drawMap()
 
@@ -269,6 +287,7 @@ function initContextScales() {
 	var yExtent = d3.extent(data, function(d) { return d.data.participating; });
 
 	// y Scale
+	// var yScale = d3.scaleLinear().domain(yExtent).range([vis.dimsContext.height, 0]);
 	var yScale = d3.scaleLinear().domain(yExtent).range([vis.dimsContext.height, 0]);
 
 	// x Extent (unique entries of x measure)
@@ -291,7 +310,7 @@ function initContextAxes() {
 
 	// Components
 	vis.axis.contextX = d3.axisBottom(vis.scale.contextX).tickSizeOuter(0);
-	vis.axis.contextY = d3.axisLeft(vis.scale.contextY).tickSizeOuter(0);
+	vis.axis.contextY = d3.axisLeft(vis.scale.contextY).tickSizeOuter(0).tickSize(-vis.dimsContext.width);
 
 	// Draw
 	vis.svgContext.append('g')
@@ -387,7 +406,7 @@ function drawContext(data, measure) {
 			.attr('width', vis.scale.contextX.bandwidth())
 			.attr('rx', 1)
 			.attr('ry', 1)
-			.style('fill', function(d) { return vis.scale.colour(d.data.school); })
+			.style('fill', function(d) { return d.data.colour; })
 			.attr('y', function(d) { return vis.scale.contextY(0); })
 			.attr('height', function(d) {  return vis.scale.contextY(0) - vis.scale.contextY(0) })
 		.transition().duration(1000)
@@ -432,6 +451,8 @@ function ready(error, data, world) {
 
 	drawPack(vis.pack.nodes);
 
+	highlightButton('controls', d3.select('#btn-pack'));
+
 	console.log(vis.pack);
 
 	/* Map */
@@ -467,6 +488,8 @@ function ready(error, data, world) {
 	// draw it
 	drawContext(newData, 'participating');
 
+	highlightButton('vis-context-controls', d3.select('#btn-students'));
+
 	/* Listener */
 	/* -------- */
 
@@ -501,11 +524,16 @@ function ready(error, data, world) {
 
 function positionMap() {
 
+	highlightButton('controls', d3.select('#btn-map'));
+
 	// Only leave nodes
 	var nodes = vis.pack.nodes.filter(function(el) { return !el.children; });
 
 	// shrink circles
 	setRadii(false);
+
+	// show map
+	showMap(true)
 
 	// Move to map
 	!vis.sim ? initMapSimulation(nodes) : mapSimulation();
@@ -513,6 +541,11 @@ function positionMap() {
 } // positionMap()
 
 function positionPack() {
+
+	highlightButton('controls', d3.select('#btn-pack'));
+
+	// hide map
+	showMap(false)
 
 	vis.sim.stop();
 
@@ -528,6 +561,8 @@ function positionPack() {
 
 function students() {
 
+	highlightButton('vis-context-controls', d3.select('#btn-students'));
+
 	var dataPrepConfig = prepContextData()
 			.data(vis.pack.nodes)
 			.yMeasure('participating')
@@ -540,6 +575,8 @@ function students() {
 } // students()
 
 function studentsBySchool() {
+
+	highlightButton('vis-context-controls', d3.select('#btn-students-by-school'));
 
 	var dataPrepConfig = prepContextData()
 			.data(vis.pack.nodes)
@@ -554,6 +591,8 @@ function studentsBySchool() {
 
 function weeks() {
 
+	highlightButton('vis-context-controls', d3.select('#btn-oper'));
+
 	var dataPrepConfig = prepContextData()
 			.data(vis.pack.nodes)
 			.yMeasure('operating_weeks')
@@ -566,6 +605,8 @@ function weeks() {
 } // weeks()
 
 function weeksBySchool() {
+
+	highlightButton('vis-context-controls', d3.select('#btn-oper-by-school'));
 
 	var dataPrepConfig = prepContextData()
 			.data(vis.pack.nodes)

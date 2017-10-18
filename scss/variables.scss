@@ -1,3 +1,6 @@
+/* Typeface */
+/* -------- */
+
 /* Font import */
 
 @font-face {
@@ -10,27 +13,39 @@
     src: url('../fonts/DIN 1451 Std Mittelschrift.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: Bembo;
+    src: url('../fonts/Bembo.ttf') format('truetype');
+}
+
 /* Font variables */
 
+/* sans-serif */
 $font-nunito-sans: 'Nunito Sans', sans-serif;
 $font-nunito: 'Nunito', sans-serif;
 $font-din-mittel: DIN-Mittel;
 
+/* serif */
+$font-bembo: Bembo;
+
 
 /* Colours */
+/* ------- */
 
-/* black & *white* */
-$colour-background: #fff;
-$colour-type-main: #000;
+$colour-background-radial-outer: #091426;
+/* $colour-background-radial-inner: #0A1F3B; */
+$colour-background-radial-inner: #0C2648;
+$colour-type-main: #f8f8f8;
+$colour-type-very-light: #f0f0f0;
 $colour-type-light: #ccc;
 $colour-type-medium: #999;
 $colour-node: #000;
-$colour-map-outline: #ccc;
-$colour-map-countries: #dcdcdc;
-$colour-highlight: #ff1493;
+$colour-data-minor: #293e5a;
+$colour-highlight: #EEEEAE;
 
 
 /* Breakpoints */
+/* ----------- */
 
 $breakpoints: (
   small: 400px,

@@ -16,11 +16,56 @@
 	fill: none;
 }
 
-.tick line, .axis path {
-  stroke: $colour-type-light;
+.x.axis path {
+  stroke: $colour-data-minor;
+  shape-rendering: crispEdges;
+}
+.y.axis path {
+	stroke-opacity: 0;
+}
+.tick line {
+	stroke: $colour-data-minor;
   shape-rendering: crispEdges;
 }
 
 .x .tick line {
 	stroke-width: 0;
+}
+
+
+/* Map */
+/* --- */
+
+#map-g path {
+	stroke-width: 1;
+	stroke: $colour-data-minor;
+	fill-opacity: 0;
+}
+
+
+/* Buttons */
+/* ------- */
+
+button {
+	font-family: $font-nunito-sans;
+	font-size: 0.8em;
+	color: $colour-type-medium;
+	background: none;
+	border: none;
+	border-bottom: 1px dotted $colour-type-medium;
+	margin: 0 0.5rem;
+	padding: 0;
+	cursor: pointer;
+	outline: none;
+	transition: all 250ms;
+}
+
+button:hover {
+	color: $colour-highlight;
+	border-color: $colour-highlight;
+}
+
+button.highlight-button {
+	color: $colour-type-main;
+	border-bottom: 1px solid $colour-type-main;
 }

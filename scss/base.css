@@ -3,11 +3,23 @@
 /* ------- */
 
 body {
-	font-family: $font-din-mittel;
-	background: $colour-background;
+	background: $colour-background-radial-outer; /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient($colour-background-radial-inner, $colour-background-radial-outer); /* Safari 5.1 to 6.0 */
+  background: -o-radial-gradient($colour-background-radial-inner, $colour-background-radial-outer); /* For Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient($colour-background-radial-inner, $colour-background-radial-outer); /* For Firefox 3.6 to 15 */
+  background: radial-gradient($colour-background-radial-inner, $colour-background-radial-outer); /* Standard syntax */
+}
+
+#header {
+	font-family: $font-bembo;
+	letter-spacing: 2px;
 	color: $colour-type-main;
 }
 
+span#test {
+	font-family: $font-nunito-sans;
+	font-size: 0.8em;
+}
 
 /* Structure */
 /* --------- */
@@ -19,6 +31,7 @@ body {
 #vis-container {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 #header, #controls, #vis-context-controls {
@@ -35,39 +48,39 @@ body {
 /* ---------- */
 
 #header {
-	border: 1px solid #ccc;
+	/* border: 1px solid #ccc; */
 	width: 100vw;
 	height: 10vh;
 }
 
 #controls {
-	border: 1px solid #ccc;
+	/* border: 1px solid #ccc; */
 	width: 100vw;
-	height: 3vh;
+	height: 4vh;
 }
 
 #vis-container {
-	border: 1px solid #ccc;
+	/* border: 1px solid #ccc; */
 	width: 100vw;
 	height: 85vh;
 }
 
 #vis-main {
-	border: 1px solid #ccc;
-	width: 100vw;
+	/* border: 1px solid #ccc; */
+	width: 60vw;
 	height: 60vh;
 }
 
 #vis-context-controls {
-	border: 1px solid #ccc;
-	width: 100vw;
-	height: 2vh;
+	/* border: 1px solid #ccc; */
+	width: 60vw;
+	height: 4vh;
 }
 
 #vis-context {
-	border: 1px solid #ccc;
-	width: 100vw;
-	height: 23vh;
+	/* border: 1px solid #ccc; */
+	width: 60vw;
+	height: 20vh;
 }
 
 

@@ -21,7 +21,8 @@
           "lat": 43.9817,
           "participating": 425,
           "operating_weeks": 8,
-          "location": "Bread Loaf, Vermont\n"
+          "location": "Bread Loaf, Vermont",
+          "colour": "#8EA9E8"
         },
         {
           "description": "The Middlebury Bread Loaf School of English is a summer graduate school that brings together more than 425 students at our three campuses each summer.",
@@ -40,7 +41,8 @@
           "lat": 43.9817,
           "participating": 425,
           "operating_weeks": 8,
-          "location": "Bread Loaf, Vermont\n"
+          "location": "Bread Loaf, Vermont",
+          "colour": "#8EA9E8"
         },
         {
           "description": "The central location for the Bread Loaf School of English is the Ripton campus, in sight of Bread Loaf Mountain in the Green Mountains of Vermont. Students take courses in creative writing, the teaching of writing, and theater arts, as well as in British, American, and world literature.",
@@ -59,7 +61,8 @@
           "lat": 43.9817,
           "participating": 250,
           "operating_weeks": 6,
-          "location": "Bread Loaf, Vermont\n"
+          "location": "Bread Loaf, Vermont",
+          "colour": "#8EA9E8"
         },
         {
           "description": "The Bread Loaf campus in England is based at Lincoln College and is centrally situated within the university and city of Oxford. The Bread Loaf Oxford program enrolls approximately 85 students and offers a curriculum centered on British literature.",
@@ -78,7 +81,8 @@
           "lat": 51.7522764,
           "participating": 85,
           "operating_weeks": 6,
-          "location": "Oxford, England"
+          "location": "Oxford, England",
+          "colour": "#8EA9E8"
         },
         {
           "description": "The Bread Loaf campus in New Mexico is located at St. John's College, at the foot of the Sangre de Cristo Mountains in Santa Fe, and enrolls approximately 60 students. Curricular offerings include a special emphasis on Southwestern literature.",
@@ -97,7 +101,8 @@
           "lat": 35.691544,
           "participating": 60,
           "operating_weeks": 6,
-          "location": "Santa Fe, New Mexico"
+          "location": "Santa Fe, New Mexico",
+          "colour": "#8EA9E8"
         },
         {
           "description": "Andover Bread Loaf’s mission is to promote literacy and educational revitalization in the most economically disadvantaged school systems and communities around the world, particularly in U.S. urban public schools. ",
@@ -116,7 +121,8 @@
           "lat": 42.6583,
           "participating": 12,
           "operating_weeks": 52,
-          "location": "Phillips Academy, Andover"
+          "location": "Phillips Academy, Andover",
+          "colour": "#8EA9E8"
         },
         {
           "description": "Students may enroll for one or more summers for continuing graduate education, or they may pursue a full program of study leading to the Master of Arts or Master of Letters degrees in English.",
@@ -135,7 +141,8 @@
           "lat": 43.9817,
           "participating": 300,
           "operating_weeks": 6,
-          "location": "Bread Loaf, Vermont\n"
+          "location": "Bread Loaf, Vermont",
+          "colour": "#8EA9E8"
         },
         {
           "description": "The Bread Loaf Teacher Network (BLTN) is a network of teachers educated at Bread Loaf and supported during the academic year by Bread Loaf staff and faculty. It encourages year-round collaboration among Bread Loaf teachers, faculty, and their students on innovative online projects.",
@@ -154,7 +161,8 @@
           "lat": 43.997783 ,
           "participating": 8000,
           "operating_weeks": 52,
-          "location": "online"
+          "location": "online",
+          "colour": "#8EA9E8"
         },
         {
           "description": "The Bread Loaf Writers' Conferences offer programs that are part of a tradition that has made Bread Loaf one of America's most valuable literary institutions. Its workshops, lectures, and classes introduce participants to rigorous practical and theoretical approaches to the craft of writing.",
@@ -173,7 +181,8 @@
           "lat": 43.9817,
           "participating": 300,
           "operating_weeks": null,
-          "location": "Bread Loaf, Vermont\n"
+          "location": "Bread Loaf, Vermont",
+          "colour": "#8EA9E8"
         }
       ]
     },
@@ -197,7 +206,8 @@
           "lat": 43.9817,
           "participating": null,
           "operating_weeks": 2,
-          "location": "Bread Loaf, Vermont\n"
+          "location": "Bread Loaf, Vermont",
+          "colour": "#485A8C"
         },
         {
           "description": "The Bread Loaf Orion Environmental Writers’ Conference is an annual, week-long writers’ conference designed to hone the skills of people interested in producing literary writing about the environment and the natural world.",
@@ -216,7 +226,8 @@
           "lat": 43.9817,
           "participating": 30,
           "operating_weeks": 1,
-          "location": "Bread Loaf, Vermont\n"
+          "location": "Bread Loaf, Vermont",
+          "colour": "#485A8C"
         },
         {
           "description": "The Bread Loaf Translators’ Conference is an annual, week-long event designed to provide training and community to beginning and experienced translators in the pursuit of translating literary texts into English.",
@@ -235,7 +246,8 @@
           "lat": 43.9817,
           "participating": 50,
           "operating_weeks": 1,
-          "location": "Bread Loaf, Vermont\n"
+          "location": "Bread Loaf, Vermont",
+          "colour": "#485A8C"
         },
         {
           "description": "The annual Bread Loaf in Sicily Conference is an intensive seven-day writers' conference held in Erice, an ancient, hilltop town on the western coast of Sicily. ",
@@ -254,7 +266,8 @@
           "lat": 12.583763,
           "participating": null,
           "operating_weeks": 1,
-          "location": "Erice, Sicily"
+          "location": "Erice, Sicily",
+          "colour": "#485A8C"
         },
         {
           "description": "The New England Young Writers’ Conference (NEYWC) at Bread Loaf is a four day writing-focused workshop for high school students in New England and from around the country.",
@@ -273,7 +286,8 @@
           "lat": 43.9817,
           "participating": null,
           "operating_weeks": 1,
-          "location": "Bread Loaf, Vermont\n"
+          "location": "Bread Loaf, Vermont",
+          "colour": "#485A8C"
         }
       ]
     },
@@ -290,14 +304,15 @@
           "credit": "yes",
           "id": "SA1",
           "image_url": "http://sandcat.middlebury.edu/palladio/newpalladio/thumbnails/Study%20Abroad/Cordoba.jpg",
-          "unit": "Argentina—Cordoba\n",
+          "unit": "Argentina—Cordoba",
           "school": "C.V. Starr Schools Abroad",
           "unit_long": "CV Starr Argentina—Cordoba",
           "lng": -64.1833,
           "lat": -31.4167,
           "participating": 56,
           "operating_weeks": 15,
-          "location": "Cordoba, Argentina"
+          "location": "Cordoba, Argentina",
+          "colour": "#79C9F6"
         },
         {
           "description": "The capital city, Buenos Aires, famous for its 47 historically and culturally distinctive neighborhoods such as La Boca and La Recoleta, is arguably the most cosmopolitan city on the continent.",
@@ -316,7 +331,8 @@
           "lat": -34.6033,
           "participating": 33,
           "operating_weeks": 15,
-          "location": "Buenos Aires, Argentina"
+          "location": "Buenos Aires, Argentina",
+          "colour": "#79C9F6"
         },
         {
           "description": "Many of our students major in disciplines other than foreign languages, yet all bring a level of proficiency that supports their commitment to language and cultural immersion. They sign and honor the Middlebury Language Pledge because they want the greatest possible challenge in a study abroad program.",
@@ -335,7 +351,8 @@
           "lat": 44.0019,
           "participating": 300,
           "operating_weeks": 32,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#79C9F6"
         },
         {
           "description": "Brazil offers an ideal setting for students of Portuguese to improve their language skills by enrolling directly in the university alongside their Brazilian peers and to immerse themselves in one of the world's most captivating societies.",
@@ -354,7 +371,8 @@
           "lat": -19.912998,
           "participating": 8,
           "operating_weeks": 36,
-          "location": "Brazil"
+          "location": "Brazil",
+          "colour": "#79C9F6"
         },
         {
           "description": "Brazil offers an ideal setting for students of Portuguese to improve their language skills by enrolling directly in the university alongside their Brazilian peers and to immerse themselves in one of the world's most captivating societies.",
@@ -373,7 +391,8 @@
           "lat": -27.5935,
           "participating": 8,
           "operating_weeks": 36,
-          "location": "Brazil"
+          "location": "Brazil",
+          "colour": "#79C9F6"
         },
         {
           "description": "Brazil offers an ideal setting for students of Portuguese to improve their language skills by enrolling directly in the university alongside their Brazilian peers and to immerse themselves in one of the world's most captivating societies.",
@@ -392,7 +411,8 @@
           "lat": -22.752754,
           "participating": 8,
           "operating_weeks": 36,
-          "location": "Brazil"
+          "location": "Brazil",
+          "colour": "#79C9F6"
         },
         {
           "description": "Cameroon is often described as 'Africa in miniature' because it exhibits all major climates of the continent. Home to roughly 240 ethnic groups, with as many distinct languages and dialects, diversity abounds.",
@@ -411,7 +431,8 @@
           "lat": 3.873659,
           "participating": 4,
           "operating_weeks": 36,
-          "location": "Cameroon"
+          "location": "Cameroon",
+          "colour": "#79C9F6"
         },
         {
           "description": "At the School in Chile, students have the option of directly enrolling in eleven different universities in six distinct study abroad locations. Each city has its own unique local flavor, and often its own climate.",
@@ -430,7 +451,8 @@
           "lat": -36.802834,
           "participating": 6,
           "operating_weeks": 36,
-          "location": "Chile"
+          "location": "Chile",
+          "colour": "#79C9F6"
         },
         {
           "description": "At the School in Chile, students have the option of directly enrolling in eleven different universities in six distinct study abroad locations. Each city has its own unique local flavor, and often its own climate.",
@@ -449,7 +471,8 @@
           "lat": -36.802834,
           "participating": 6,
           "operating_weeks": 36,
-          "location": "Chile"
+          "location": "Chile",
+          "colour": "#79C9F6"
         },
         {
           "description": "At the School in Chile, students have the option of directly enrolling in eleven different universities in six distinct study abroad locations. Each city has its own unique local flavor, and often its own climate.",
@@ -468,7 +491,8 @@
           "lat": -33.447487,
           "participating": 6,
           "operating_weeks": 36,
-          "location": "Chile"
+          "location": "Chile",
+          "colour": "#79C9F6"
         },
         {
           "description": "At the School in Chile, students have the option of directly enrolling in eleven different universities in six distinct study abroad locations. Each city has its own unique local flavor, and often its own climate.",
@@ -487,7 +511,8 @@
           "lat": -38.7478,
           "participating": 6,
           "operating_weeks": 36,
-          "location": "Chile"
+          "location": "Chile",
+          "colour": "#79C9F6"
         },
         {
           "description": "At the School in Chile, students have the option of directly enrolling in eleven different universities in six distinct study abroad locations. Each city has its own unique local flavor, and often its own climate.",
@@ -506,7 +531,8 @@
           "lat": -39.819588,
           "participating": 6,
           "operating_weeks": 36,
-          "location": "Chile"
+          "location": "Chile",
+          "colour": "#79C9F6"
         },
         {
           "description": "At the School in Chile, students have the option of directly enrolling in eleven different universities in six distinct study abroad locations. Each city has its own unique local flavor, and often its own climate.",
@@ -525,7 +551,8 @@
           "lat": -33.03558,
           "participating": 6,
           "operating_weeks": 36,
-          "location": "Chile"
+          "location": "Chile",
+          "colour": "#79C9F6"
         },
         {
           "description": "The Middlebury C.V. Starr School in China, in cooperation with CET Academic Programs, offers immersion opportunities in the language and culture in three distinct study abroad locations: Beijing, Hangzhou, and Kunming.",
@@ -544,7 +571,8 @@
           "lat": 39.925011,
           "participating": 12,
           "operating_weeks": 36,
-          "location": "China"
+          "location": "China",
+          "colour": "#79C9F6"
         },
         {
           "description": "The Middlebury C.V. Starr School in China, in cooperation with CET Academic Programs, offers immersion opportunities in the language and culture in three distinct study abroad locations: Beijing, Hangzhou, and Kunming.",
@@ -563,7 +591,8 @@
           "lat": 33.868134,
           "participating": 12,
           "operating_weeks": 36,
-          "location": "China"
+          "location": "China",
+          "colour": "#79C9F6"
         },
         {
           "description": "The Middlebury C.V. Starr School in China, in cooperation with CET Academic Programs, offers immersion opportunities in the language and culture in three distinct study abroad locations: Beijing, Hangzhou, and Kunming.",
@@ -582,7 +611,8 @@
           "lat": 24.919493,
           "participating": 12,
           "operating_weeks": 36,
-          "location": "China"
+          "location": "China",
+          "colour": "#79C9F6"
         },
         {
           "description": "Designed for students at an advanced level of French, the Middlebury School in France provides opportunities to experience French culture in one of three locations: Bordeaux, Paris, and Poitiers.",
@@ -601,7 +631,8 @@
           "lat": 44.836151,
           "participating": 9,
           "operating_weeks": 36,
-          "location": "France"
+          "location": "France",
+          "colour": "#79C9F6"
         },
         {
           "description": "Designed for students at an advanced level of French, the Middlebury School in France provides opportunities to experience French culture in one of three locations: Bordeaux, Paris, and Poitiers.",
@@ -620,7 +651,8 @@
           "lat": 48.864716,
           "participating": 9,
           "operating_weeks": 36,
-          "location": "France"
+          "location": "France",
+          "colour": "#79C9F6"
         },
         {
           "description": "Designed for students at an advanced level of French, the Middlebury School in France provides opportunities to experience French culture in one of three locations: Bordeaux, Paris, and Poitiers.",
@@ -639,7 +671,8 @@
           "lat": 46.580224,
           "participating": 9,
           "operating_weeks": 36,
-          "location": "France"
+          "location": "France",
+          "colour": "#79C9F6"
         },
         {
           "description": "Founded in 1959, the Middlebury School in Germany provides students with the opportunity to live, study, and socialize with Germans and immerse themselves completely in the local culture. ",
@@ -658,7 +691,8 @@
           "lat": 52.520008,
           "participating": 12,
           "operating_weeks": 36,
-          "location": "Germany"
+          "location": "Germany",
+          "colour": "#79C9F6"
         },
         {
           "description": "Founded in 1959, the Middlebury School in Germany provides students with the opportunity to live, study, and socialize with Germans and immerse themselves completely in the local culture. ",
@@ -677,7 +711,8 @@
           "lat": 49.9951227,
           "participating": 12,
           "operating_weeks": 36,
-          "location": "Germany"
+          "location": "Germany",
+          "colour": "#79C9F6"
         },
         {
           "description": "The School in India is located in Delhi and based at St. Stephen’s College and Lady Shri Ram College for Women (LSR), both of which are part of the larger University of Delhi. (Female students may pursue classes at either of the two colleges, while men will study at St. Stephen's.)",
@@ -696,7 +731,8 @@
           "lat": 28.6448,
           "participating": 8,
           "operating_weeks": 36,
-          "location": "India"
+          "location": "India",
+          "colour": "#79C9F6"
         },
         {
           "description": "The Program in Israel has been suspended for 2015-2016, and is not currently accepting applications.",
@@ -715,7 +751,8 @@
           "lat": 31.252973,
           "participating": 0,
           "operating_weeks": 36,
-          "location": "Israel"
+          "location": "Israel",
+          "colour": "#79C9F6"
         },
         {
           "description": "With sites in Ferrara, Florence, and Rome, the Middlebury School in Italy offers a wide range of environments for academic and cultural immersion. Students have the opportunity to enroll directly into an Italian university.",
@@ -734,7 +771,8 @@
           "lat": 44.8378942,
           "participating": 20,
           "operating_weeks": 36,
-          "location": "Italy"
+          "location": "Italy",
+          "colour": "#79C9F6"
         },
         {
           "description": "With sites in Ferrara, Florence, and Rome, the Middlebury School in Italy offers a wide range of environments for academic and cultural immersion. Students have the opportunity to enroll directly into an Italian university.",
@@ -753,7 +791,8 @@
           "lat": 43.768009,
           "participating": 20,
           "operating_weeks": 36,
-          "location": "Italy"
+          "location": "Italy",
+          "colour": "#79C9F6"
         },
         {
           "description": "With sites in Ferrara, Florence, and Rome, the Middlebury School in Italy offers a wide range of environments for academic and cultural immersion. Students have the opportunity to enroll directly into an Italian university.",
@@ -772,7 +811,8 @@
           "lat": 41.890251,
           "participating": 20,
           "operating_weeks": 36,
-          "location": "Italy"
+          "location": "Italy",
+          "colour": "#79C9F6"
         },
         {
           "description": "The contrast of Tokyo’s history and modernity can be seen throughout the city and its wards in the fast-paced approach to urban life juxtaposed against its architecture, traditions, and landscape, all of which make it an ideal location for study abroad.",
@@ -791,7 +831,8 @@
           "lat": 35.652832,
           "participating": 20,
           "operating_weeks": 36,
-          "location": "Japan"
+          "location": "Japan",
+          "colour": "#79C9F6"
         },
         {
           "description": "The School in Jordan is based at the University of Jordan, Jordan’s oldest public 4-year institution of higher education, established in 1962. With a strong emphasis on research, and a rich background in liberal arts, the University of Jordan is an excellent host for students of all academic backgrounds.",
@@ -810,7 +851,8 @@
           "lat": 31.963158,
           "participating": 20,
           "operating_weeks": 36,
-          "location": "Jordan"
+          "location": "Jordan",
+          "colour": "#79C9F6"
         },
         {
           "description": "Unlike many American programs in Russia, in which study abroad students are segregated from regular university and community life, our programs in Irkutsk, Moscow, and Yaroslavl have been carefully designed to encourage linguistic and cultural integration.",
@@ -829,7 +871,8 @@
           "lat": 52.275261,
           "participating": 5,
           "operating_weeks": 36,
-          "location": "Russia"
+          "location": "Russia",
+          "colour": "#79C9F6"
         },
         {
           "description": "Unlike many American programs in Russia, in which study abroad students are segregated from regular university and community life, our programs in Irkutsk, Moscow, and Yaroslavl have been carefully designed to encourage linguistic and cultural integration.",
@@ -848,7 +891,8 @@
           "lat": 55.751244,
           "participating": 5,
           "operating_weeks": 36,
-          "location": "Russia"
+          "location": "Russia",
+          "colour": "#79C9F6"
         },
         {
           "description": "Unlike many American programs in Russia, in which study abroad students are segregated from regular university and community life, our programs in Irkutsk, Moscow, and Yaroslavl have been carefully designed to encourage linguistic and cultural integration.",
@@ -867,7 +911,8 @@
           "lat": 57.6301004,
           "participating": 5,
           "operating_weeks": 36,
-          "location": "Russia"
+          "location": "Russia",
+          "colour": "#79C9F6"
         },
         {
           "description": "With program options in Madrid, Getafe, Logroño, and Córdoba – four very different and distinct study abroad sites – the School in Spain offers a wide range of options for true immersion in Spanish language and culture.",
@@ -886,7 +931,8 @@
           "lat": 37.8847267,
           "participating": 12,
           "operating_weeks": 36,
-          "location": "Spain"
+          "location": "Spain",
+          "colour": "#79C9F6"
         },
         {
           "description": "With program options in Madrid, Getafe, Logroño, and Córdoba – four very different and distinct study abroad sites – the School in Spain offers a wide range of options for true immersion in Spanish language and culture.",
@@ -905,7 +951,8 @@
           "lat": 40.3049763,
           "participating": 12,
           "operating_weeks": 36,
-          "location": "Spain"
+          "location": "Spain",
+          "colour": "#79C9F6"
         },
         {
           "description": "With program options in Madrid, Getafe, Logroño, and Córdoba – four very different and distinct study abroad sites – the School in Spain offers a wide range of options for true immersion in Spanish language and culture.",
@@ -924,7 +971,8 @@
           "lat": 42.4657764,
           "participating": 12,
           "operating_weeks": 36,
-          "location": "Spain"
+          "location": "Spain",
+          "colour": "#79C9F6"
         },
         {
           "description": "With program options in Madrid, Getafe, Logroño, and Córdoba – four very different and distinct study abroad sites – the School in Spain offers a wide range of options for true immersion in Spanish language and culture.",
@@ -943,7 +991,8 @@
           "lat": 40.4166909,
           "participating": 12,
           "operating_weeks": 36,
-          "location": "Spain"
+          "location": "Spain",
+          "colour": "#79C9F6"
         },
         {
           "description": "The Middlebury College-CMRS Oxford Humanities Program (Middlebury-CMRS) is a semester or yearlong opportunity to study abroad in the vibrant and historical city of Oxford, England.",
@@ -962,7 +1011,8 @@
           "lat": 51.7522764,
           "participating": 15,
           "operating_weeks": 36,
-          "location": "United Kingdom"
+          "location": "United Kingdom",
+          "colour": "#79C9F6"
         },
         {
           "description": "While in Montevideo, students live in homestays and study with local students. They enroll directly alongside their Uruguayan peers at one of Middlebury's three host institutions: the Universidad Católica del Uruguay, the Universidad de la República, or the Universidad ORT.",
@@ -981,7 +1031,8 @@
           "lat": -34.901112,
           "participating": 5,
           "operating_weeks": 36,
-          "location": "Uruguay"
+          "location": "Uruguay",
+          "colour": "#79C9F6"
         }
       ]
     },
@@ -1005,7 +1056,8 @@
           "lat": null,
           "participating": null,
           "operating_weeks": null,
-          "location": null
+          "location": null,
+          "colour": "#F6C280"
         },
         {
           "description": "The mission of the Franklin Environmental Center is to shape a world in which humans, ecological communities, and economic systems can sustainably coexist.",
@@ -1024,7 +1076,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "Founded in 1800 and set in the beautiful Champlain Valley of Vermont, Middlebury College has long been one of the finest liberal arts colleges in the country. Our 2,450 students, from all 50 states and more than 70 countries, are part of a community devoted to teaching, learning, and collaborating.",
@@ -1043,7 +1096,8 @@
           "lat": 44.0019,
           "participating": 2450,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "Middlebury College has emerged as one of a handful of the most highly regarded liberal arts colleges. Middlebury is unique among these schools in being a classic liberal arts college that also offers graduate and specialized programs operating around the world.",
@@ -1062,7 +1116,8 @@
           "lat": 44.0019,
           "participating": 1000,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "Current PCI programming includes MiddEntrepreneurs, TEDxMiddlebury, MiddChallenge, the Hunt, MiddVentures, MIDDSTART, Davis Projects for Peach, Tree House Fund, and New Millennium Fund. Spaces around campus include Old Stone Mill, Annex, M Gallery, and Center Gallery.",
@@ -1074,14 +1129,15 @@
           "credit": "yes",
           "id": "MC4",
           "image_url": "http://sandcat.middlebury.edu/palladio/newpalladio/thumbnails/Study%20Abroad/mdl_college_left_blue.jpg",
-          "unit": "Innovation & Engagement Programs on Creativity & Innovation\n",
+          "unit": "Innovation & Engagement Programs on Creativity & Innovation",
           "school": "Middlebury College",
           "unit_long": "Middlebury Innovation & Engagement Programs on Creativity & Innovation",
           "lng": -73.1456,
           "lat": 44.0019,
           "participating": 300,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "MiddCORE is a mentor-driven, experiential-learning program that builds skills, creates opportunities, and expands networks for tomorrow’s leaders and innovators. ",
@@ -1100,10 +1156,11 @@
           "lat": 44.0019,
           "participating": 400,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
-          "description": "Whether it's finding that perfect internship, getting practical \ninformation for landing the job, or just looking to explore your \noptions, the Center for Careers & Internships is the place to start.",
+          "description": "Whether it's finding that perfect internship, getting practical information for landing the job, or just looking to explore your options, the Center for Careers & Internships is the place to start.",
           "year_began": 2008,
           "degree": "no",
           "connections": "19A",
@@ -1119,7 +1176,8 @@
           "lat": 44.0019,
           "participating": 200,
           "operating_weeks": 40,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "Locally and around the world, our office helps Middlebury College students explore civic identity, develop essential life-long skills, and pursue projects in collaboration with communities, all while striving to contribute to the public good.",
@@ -1138,7 +1196,8 @@
           "lat": 44.0019,
           "participating": 150,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "The Chaplain's Office exists as an expression of the College's longstanding commitment to the education of the whole person. For over two centuries, Middlebury College has strived to be a place where a student's intellectual, spiritual, and moral character can grow and flourish.",
@@ -1147,7 +1206,7 @@
           "connections": null,
           "connections_notes": null,
           "url": "http://www.middlebury.edu/taxonomy/term/7441",
-          "credit": "no\n",
+          "credit": "no",
           "id": "MC8",
           "image_url": "http://sandcat.middlebury.edu/palladio/newpalladio/thumbnails/Study%20Abroad/mdl_college_left_blue.jpg",
           "unit": "Charles P. Scott Center for Spiritual and Religious Life",
@@ -1157,7 +1216,8 @@
           "lat": 44.0019,
           "participating": 200,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "The Middlebury College Museum of Art is an integral educational and cultural component of Middlebury College whose mission is to enable visitors to understand more fully the artistic achievements represented by a diversity of cultures. Its collection includes several thousand objects.",
@@ -1176,7 +1236,8 @@
           "lat": 44.0019,
           "participating": 40,
           "operating_weeks": 44,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "Student Activities helps students connect with one another and facilitates involvement in a wide variety of activities and programs, designed to enhance students’ college experience.",
@@ -1195,7 +1256,8 @@
           "lat": 44.0019,
           "participating": 900,
           "operating_weeks": 38,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "Many students major in disciplines other than foreign languages, yet all bring a level of proficiency that supports their commitment to language and cultural immersion. They sign and honor the Middlebury Language Pledge.",
@@ -1214,7 +1276,8 @@
           "lat": 44.0019,
           "participating": 500,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "We currently have 80 Davis UWC Scholars from 65 different countries here at Middlebury. They are part of a student body that is over 10 percent international, and they help create a global campus climate. We are also proud to host the scholarship program's national headquarters in Adirondack House.",
@@ -1226,14 +1289,15 @@
           "credit": "no",
           "id": "MC12",
           "image_url": "http://sandcat.middlebury.edu/palladio/newpalladio/thumbnails/Study%20Abroad/mdl_college_left_blue.jpg",
-          "unit": "Davis United World College Scholars Program\n",
+          "unit": "Davis United World College Scholars Program",
           "school": "Middlebury College",
           "unit_long": "Middlebury Davis United World College Scholars Program",
           "lng": -73.1456,
           "lat": 44.0019,
           "participating": 80,
           "operating_weeks": 38,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "The Rohatyn Center for Global Affairs (RCGA) is Middlebury College’s flagship site for the production and dissemination of knowledge about international and global issues. It reaches across boundaries of language, culture, and geography.",
@@ -1252,7 +1316,8 @@
           "lat": 44.0019,
           "participating": null,
           "operating_weeks": null,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "Exceptionally well-qualified students may be considered for a special early-admissions program during the sophomore year.",
@@ -1271,7 +1336,8 @@
           "lat": 44.0019,
           "participating": 100,
           "operating_weeks": 42,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "This office offers a number of opportunities for students to prepare for a career in health professions or one of the STEM fields.",
@@ -1290,7 +1356,8 @@
           "lat": 44.0019,
           "participating": 100,
           "operating_weeks": 42,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "Upon graduation from college and completion of Army Reserve Officers' Training Corps, students earn the bar of a Second Lieutenant and serve in the Active Army, the Army Reserve or the Army National Guard and become leaders for life.",
@@ -1309,7 +1376,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 42,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "The Center for the Comparative Study of Race and Ethnicity serves the Middlebury College community through its support for pedagogy and research that employs interdisciplinary approaches towards the understanding of formations of race and ethnicity. ",
@@ -1328,7 +1396,8 @@
           "lat": 44.0019,
           "participating": 100,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "The Center for Teaching, Learning & Research fosters teaching excellence, effective student learning, innovative research and collaborative engagement across the Middlebury community.",
@@ -1347,7 +1416,8 @@
           "lat": 44.0019,
           "participating": 600,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "The Center for Teaching, Learning & Research fosters teaching excellence, effective student learning, innovative research and collaborative engagement across the Middlebury community.",
@@ -1366,7 +1436,8 @@
           "lat": 44.0019,
           "participating": 600,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "The Center for Teaching, Learning & Research fosters teaching excellence, effective student learning, innovative research and collaborative engagement across the Middlebury community.",
@@ -1385,7 +1456,8 @@
           "lat": 44.0019,
           "participating": 600,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "The Digital Liberal Arts Initiative (DLA) is a campus-wide opportunity for faculty to explore the digital methods that are changing scholarship in the Humanities and the Arts.",
@@ -1404,7 +1476,8 @@
           "lat": 44.0019,
           "participating": 60,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": null,
@@ -1423,7 +1496,8 @@
           "lat": 44.0019,
           "participating": 10,
           "operating_weeks": 52,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": null,
@@ -1442,7 +1516,8 @@
           "lat": 44.0019,
           "participating": null,
           "operating_weeks": null,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         },
         {
           "description": "Our office in Washington gives students, faculty and staff from Middlebury College and the Middlebury Institute of International Studies, at Monterey access to a wealth of resources in the nation's capital.",
@@ -1461,7 +1536,8 @@
           "lat": 38.9021614,
           "participating": null,
           "operating_weeks": null,
-          "location": "Washington, DC"
+          "location": "Washington, DC",
+          "colour": "#F6C280"
         },
         {
           "description": null,
@@ -1480,7 +1556,8 @@
           "lat": null,
           "participating": null,
           "operating_weeks": null,
-          "location": null
+          "location": null,
+          "colour": "#F6C280"
         },
         {
           "description": null,
@@ -1499,7 +1576,8 @@
           "lat": null,
           "participating": null,
           "operating_weeks": null,
-          "location": null
+          "location": null,
+          "colour": "#F6C280"
         },
         {
           "description": "Based on our conviction that social entrepreneurship education is integral to the 21st-century liberal arts, we offer students, faculty, staff, and alumni opportunities to reflect, connect, analyze, and engage with the world.",
@@ -1518,7 +1596,8 @@
           "lat": 44.0019,
           "participating": 80,
           "operating_weeks": 42,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#F6C280"
         }
       ]
     },
@@ -1542,7 +1621,8 @@
           "lat": 36.595638,
           "participating": 100,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "MIIS students study international business, environment, management, conflict resolution, social change, trade and diplomacy, development, nonproliferation and terrorism studies, translation and interpretation, language teaching, and international education.",
@@ -1561,7 +1641,8 @@
           "lat": 36.595638,
           "participating": 100,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "The Joint Bachelor of Arts in International Studies (BAIS) and Master of Arts (MA) degree program is designed for students who have completed the first two years of undergraduate coursework and would like to earn a bachelor's degree on the path to a master's degree.",
@@ -1580,7 +1661,8 @@
           "lat": 36.595638,
           "participating": 100,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "The Institute offers professional graduate programs, certificate and short-term programs, as well as a wide variety of language learning options. We educate and prepare students to be global changemakers.",
@@ -1599,7 +1681,8 @@
           "lat": 36.595638,
           "participating": 100,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "We provide a strong academic foundation that combines sustainability science, economics and finance",
@@ -1618,7 +1701,8 @@
           "lat": 36.595638,
           "participating": 100,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "Our joint master's degree program offers a multi-disciplinary approach to education within the international development context. Students gain practical skills and tools while building in-depth management competencies for educational settings of all types.",
@@ -1637,7 +1721,8 @@
           "lat": 36.595638,
           "participating": 100,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "We offer professional development and certificate programs for professionals, business executives, students and community members.\\",
@@ -1656,7 +1741,8 @@
           "lat": 36.595638,
           "participating": 100,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "Language and intercultural communication lie at the very heart of the Institute's mission. We teach students to view language as a way to connect and facilitate dialogue between different peoples and cultures.",
@@ -1675,7 +1761,8 @@
           "lat": 36.595638,
           "participating": 100,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "We have established partnerships with prestigious international universities to provide students with more opportunities for higher-language development and cultural immersion.",
@@ -1694,7 +1781,8 @@
           "lat": 36.595638,
           "participating": 20,
           "operating_weeks": 36,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "The new Center for the Blue Economy leverages Monterey Bay-area marine science resources and complements them with rigorous economic and policy analysis. It offers graduate students a concentration in ocean and coastal resource management, and serves as a research hub.",
@@ -1713,7 +1801,8 @@
           "lat": 36.595638,
           "participating": 32,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "The Center for Social Impact Learning (CSIL) provides relevant learning and research programming for students interested in exploring and developing careers in social enterprise and impact investment management.",
@@ -1732,7 +1821,8 @@
           "lat": 36.595638,
           "participating": 20,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "Center for Conflict Studies works on understanding conflicts, developing tools and skills to resolve conflicts, and Peacebuilding in post-war societies.",
@@ -1751,7 +1841,8 @@
           "lat": 36.595638,
           "participating": 30,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "The Center for East Asian Studies (CEAS) sponsors research, lectures, and seminars on subjects relating to East Asia. ",
@@ -1770,7 +1861,8 @@
           "lat": 36.595638,
           "participating": 41,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "CNS strives to combat the spread of weapons of mass destruction (WMD). It is the largest nongovernmental organization in the United States devoted exclusively to research and training on nonproliferation issues.",
@@ -1789,7 +1881,8 @@
           "lat": 36.595638,
           "participating": 150,
           "operating_weeks": 52,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "MonTREP has three main goals: to research topics related to terrorism studies and extremist movements; to educate students about the history and trends of these groups; and to generate policy recommendations that can guide professionals in counterterrorism and related fields. ",
@@ -1808,7 +1901,8 @@
           "lat": 36.595638,
           "participating": 24,
           "operating_weeks": 36,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         },
         {
           "description": "There are many opportunities for students to get involved: student clubs, Student Council or even our very own MIIS Fútbol team and more!",
@@ -1827,7 +1921,8 @@
           "lat": 36.595638,
           "participating": 250,
           "operating_weeks": 36,
-          "location": "Monterey, California"
+          "location": "Monterey, California",
+          "colour": "#DED93B"
         }
       ]
     },
@@ -1851,7 +1946,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "With its long tradition of academic excellence, the Chinese School offers its students a unique, unparalleled opportunity to learn Chinese language and culture.",
@@ -1870,7 +1966,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "The French School reflects the diversity and richness of both France and the greater Francophone world.",
@@ -1889,7 +1986,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "Founded in 1915 as the first of the Language Schools, the German School has decades of experience in helping students achieve true fluency in German language and culture.",
@@ -1908,7 +2006,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "Opened in the summer of 2008, the School of Hebrew combines the best of two worlds—a time-tested curriculum and an immersion-learning environment for which the Language Schools have been celebrated for nearly a century.",
@@ -1927,7 +2026,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "The Italian School offers a teacher-to-student ratio that is one of the lowest in academia, presenting you with a unique opportunity to acquire and expand your skills under the constant guidance of some of the world’s most experienced and dedicated instructors.",
@@ -1946,7 +2046,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "In the Japanese School you'll experience a program that engages you at your current level while propelling you on to the next. ",
@@ -1965,7 +2066,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "The School of Korean opened in 2015 at the Mills Campus. Korean is the 11th language offered at the summer Language Schools.",
@@ -1984,7 +2086,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "Recognized as one of the world's best Russian language programs, the Davis School of Russian has been offering its unique blend of cultural and language immersion for 68 years.",
@@ -2003,7 +2106,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "At the Spanish School, we believe that engaging your mind with topics of interest—from history and the arts to current events and cooking—is the best way to tap into the motivation you need to succeed.",
@@ -2022,7 +2126,8 @@
           "lat": 44.0019,
           "participating": 50,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         },
         {
           "description": "At Middlebury, students work with some of the world's leading academic language professionals and learn alongside motivated peers who share an appetite for linguistic achievement. Students earn a master's degree in one summer plus an academic year, or in just four summers on campus.",
@@ -2041,7 +2146,8 @@
           "lat": 44.0019,
           "participating": 150,
           "operating_weeks": 8,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#DB8721"
         }
       ]
     },
@@ -2065,7 +2171,8 @@
           "lat": 44.0019,
           "participating": 26,
           "operating_weeks": 6,
-          "location": "Middlebury, Vermont"
+          "location": "Middlebury, Vermont",
+          "colour": "#AD74ED"
         }
       ]
     }

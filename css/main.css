@@ -15,6 +15,8 @@ html, body {
 a:link, a:visited, a:hover, a:active {
   color: #000; }
 
+/* Typeface */
+/* -------- */
 /* Font import */
 @font-face {
   font-family: DIN-Eng;
@@ -24,16 +26,40 @@ a:link, a:visited, a:hover, a:active {
   font-family: DIN-Mittel;
   src: url("../fonts/DIN 1451 Std Mittelschrift.ttf") format("truetype"); }
 
+@font-face {
+  font-family: Bembo;
+  src: url("../fonts/Bembo.ttf") format("truetype"); }
+
 /* Font variables */
+/* sans-serif */
+/* serif */
 /* Colours */
-/* black & *white* */
+/* ------- */
+/* $colour-background-radial-inner: #0A1F3B; */
 /* Breakpoints */
+/* ----------- */
 /* General */
 /* ------- */
 body {
-  font-family: DIN-Mittel;
-  background: #fff;
-  color: #000; }
+  background: #091426;
+  /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient(#0C2648, #091426);
+  /* Safari 5.1 to 6.0 */
+  background: -o-radial-gradient(#0C2648, #091426);
+  /* For Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient(#0C2648, #091426);
+  /* For Firefox 3.6 to 15 */
+  background: radial-gradient(#0C2648, #091426);
+  /* Standard syntax */ }
+
+#header {
+  font-family: Bembo;
+  letter-spacing: 2px;
+  color: #f8f8f8; }
+
+span#test {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.8em; }
 
 /* Structure */
 /* --------- */
@@ -42,7 +68,8 @@ body {
 
 #vis-container {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: center; }
 
 #header, #controls, #vis-context-controls {
   justify-content: center; }
@@ -53,34 +80,34 @@ body {
 /* Dimensions */
 /* ---------- */
 #header {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   width: 100vw;
   height: 10vh; }
 
 #controls {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   width: 100vw;
-  height: 3vh; }
+  height: 4vh; }
 
 #vis-container {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   width: 100vw;
   height: 85vh; }
 
 #vis-main {
-  border: 1px solid #ccc;
-  width: 100vw;
+  /* border: 1px solid #ccc; */
+  width: 60vw;
   height: 60vh; }
 
 #vis-context-controls {
-  border: 1px solid #ccc;
-  width: 100vw;
-  height: 2vh; }
+  /* border: 1px solid #ccc; */
+  width: 60vw;
+  height: 4vh; }
 
 #vis-context {
-  border: 1px solid #ccc;
-  width: 100vw;
-  height: 23vh; }
+  /* border: 1px solid #ccc; */
+  width: 60vw;
+  height: 20vh; }
 
 /* Context */
 /* ======= */
@@ -95,9 +122,46 @@ body {
 .x text {
   fill: none; }
 
-.tick line, .axis path {
-  stroke: #ccc;
+.x.axis path {
+  stroke: #293e5a;
+  shape-rendering: crispEdges; }
+
+.y.axis path {
+  stroke-opacity: 0; }
+
+.tick line {
+  stroke: #293e5a;
   shape-rendering: crispEdges; }
 
 .x .tick line {
   stroke-width: 0; }
+
+/* Map */
+/* --- */
+#map-g path {
+  stroke-width: 1;
+  stroke: #293e5a;
+  fill-opacity: 0; }
+
+/* Buttons */
+/* ------- */
+button {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.8em;
+  color: #999;
+  background: none;
+  border: none;
+  border-bottom: 1px dotted #999;
+  margin: 0 0.5rem;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: all 250ms; }
+
+button:hover {
+  color: #EEEEAE;
+  border-color: #EEEEAE; }
+
+button.highlight-button {
+  color: #f8f8f8;
+  border-bottom: 1px solid #f8f8f8; }
