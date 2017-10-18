@@ -1,0 +1,65 @@
+
+
+/* Structure */
+/* --------- */
+
+#controls, #vis-context-controls {
+	display: flex;
+}
+
+#vis-container, #header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#header, #controls, #vis-context-controls {
+	justify-content: center;
+}
+
+#header {
+	align-items: center;
+}
+
+
+
+/* Dimensions */
+/* ---------- */
+
+#header {
+	/* border: 1px solid #ccc; */
+	width: 100vw;
+	height: 9vh;
+}
+
+#controls {
+	/* border: 1px solid #ccc; */
+	width: 100vw;
+	height: 4vh;
+}
+
+#vis-container {
+	/* border: 1px solid #ccc; */
+	width: 100vw;
+	height: 85vh;
+}
+
+#vis-main {
+	/* border: 1px solid #ccc; */
+	width: 60vw;
+	height: 57vh;
+}
+
+#vis-context {
+	/* border: 1px solid #ccc; */
+	width: 60vw;
+	height: 23vh;
+}
+
+#vis-context-controls {
+	/* border: 1px solid #ccc; */
+	width: 60vw;
+	height: 4vh;
+}
+
+

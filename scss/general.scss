@@ -1,0 +1,104 @@
+
+/* General */
+/* ------- */
+
+body {
+	background: $colour-background-radial-outer; /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient($colour-background-radial-inner, $colour-background-radial-outer); /* Safari 5.1 to 6.0 */
+  background: -o-radial-gradient($colour-background-radial-inner, $colour-background-radial-outer); /* For Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient($colour-background-radial-inner, $colour-background-radial-outer); /* For Firefox 3.6 to 15 */
+  background: radial-gradient($colour-background-radial-inner, $colour-background-radial-outer); /* Standard syntax */
+}
+
+#header h1 {
+	font-family: $font-bembo;
+	letter-spacing: 2px;
+	color: $colour-type-main;
+	margin: 0.5em 0 0 0;
+}
+
+
+span#test {
+	font-family: $font-nunito-sans;
+	font-size: 0.8em;
+}
+
+#header h4 {
+	font-family: $font-nunito-sans;
+	margin: 0;
+	color: $colour-type-minor;
+	letter-spacing: 2px;
+	text-shadow: 0px 1px 1px #000;
+}
+
+
+/* Buttons */
+/* ------- */
+
+button {
+	font-family: $font-nunito-sans;
+	font-size: 0.8em;
+	color: $colour-type-minor;
+	background: none;
+	border: none;
+	border-bottom: 1px dotted $colour-type-minor;
+	margin: 0 0.5rem;
+	padding: 0;
+	cursor: pointer;
+	outline: none;
+	transition: all 250ms;
+}
+
+button:hover {
+	color: $colour-highlight;
+	border-color: $colour-highlight;
+}
+
+button.highlight-button {
+	color: $colour-type-main;
+	border-bottom: 1px solid $colour-type-main;
+}
+
+/* Tooltip */
+/* ------- */
+
+#tooltip {
+	position: absolute;
+	font-family: $font-nunito-sans;
+	font-size: 0.8em;
+	color: $colour-background-radial-inner;
+	background: #fff;
+	background: $colour-tooltip-bg;
+	box-shadow: 2px 2px 5px rgba(255,255,255,0.5);
+	pointer-events: none;
+	opacity: 0;
+}
+
+#tip-header {
+	width: 300px;
+	border-bottom: 1px solid $colour-background-radial-inner;
+	padding: 1rem;
+}
+
+#tip-header h2, #tip-header h4 {
+	margin: 0;
+}
+
+#tip-body {
+	display: flex;
+	padding: 1rem;
+	width: 300px;
+}
+
+#tip-body div {
+	width: 50%;
+}
+
+#tip-body-text p {
+	margin: 0;
+}
+
+#tip-body-image img {
+	max-width: 100%;
+}
+

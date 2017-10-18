@@ -37,37 +37,6 @@ a:link, a:visited, a:hover, a:active {
 /* ------- */
 /* Breakpoints */
 /* ----------- */
-/* General */
-/* ------- */
-body {
-  background: #091426;
-  /* For browsers that do not support gradients */
-  background: -webkit-radial-gradient(#0C2648, #091426);
-  /* Safari 5.1 to 6.0 */
-  background: -o-radial-gradient(#0C2648, #091426);
-  /* For Opera 11.6 to 12.0 */
-  background: -moz-radial-gradient(#0C2648, #091426);
-  /* For Firefox 3.6 to 15 */
-  background: radial-gradient(#0C2648, #091426);
-  /* Standard syntax */ }
-
-#header h1 {
-  font-family: Bembo;
-  letter-spacing: 2px;
-  color: #f8f8f8;
-  margin: 0.5em 0 0 0; }
-
-span#test {
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 0.8em; }
-
-#header h4 {
-  font-family: "Nunito Sans", sans-serif;
-  margin: 0;
-  color: #6b788e;
-  letter-spacing: 2px;
-  text-shadow: 0px 1px 1px #000; }
-
 /* Structure */
 /* --------- */
 #controls, #vis-context-controls {
@@ -116,8 +85,102 @@ span#test {
   width: 60vw;
   height: 4vh; }
 
-/* Context */
-/* ======= */
+/* General */
+/* ------- */
+body {
+  background: #091426;
+  /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient(#0C2648, #091426);
+  /* Safari 5.1 to 6.0 */
+  background: -o-radial-gradient(#0C2648, #091426);
+  /* For Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient(#0C2648, #091426);
+  /* For Firefox 3.6 to 15 */
+  background: radial-gradient(#0C2648, #091426);
+  /* Standard syntax */ }
+
+#header h1 {
+  font-family: Bembo;
+  letter-spacing: 2px;
+  color: #f8f8f8;
+  margin: 0.5em 0 0 0; }
+
+span#test {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.8em; }
+
+#header h4 {
+  font-family: "Nunito Sans", sans-serif;
+  margin: 0;
+  color: #6b788e;
+  letter-spacing: 2px;
+  text-shadow: 0px 1px 1px #000; }
+
+/* Buttons */
+/* ------- */
+button {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.8em;
+  color: #6b788e;
+  background: none;
+  border: none;
+  border-bottom: 1px dotted #6b788e;
+  margin: 0 0.5rem;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: all 250ms; }
+
+button:hover {
+  color: #EEEEAE;
+  border-color: #EEEEAE; }
+
+button.highlight-button {
+  color: #f8f8f8;
+  border-bottom: 1px solid #f8f8f8; }
+
+/* Tooltip */
+/* ------- */
+#tooltip {
+  position: absolute;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.8em;
+  color: #0C2648;
+  background: #fff;
+  background: #e7edf7;
+  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  opacity: 0; }
+
+#tip-header {
+  width: 300px;
+  border-bottom: 1px solid #0C2648;
+  padding: 1rem; }
+
+#tip-header h2, #tip-header h4 {
+  margin: 0; }
+
+#tip-body {
+  display: flex;
+  padding: 1rem;
+  width: 300px; }
+
+#tip-body div {
+  width: 50%; }
+
+#tip-body-text p {
+  margin: 0; }
+
+#tip-body-image img {
+  max-width: 100%; }
+
+/* Map */
+/* --- */
+#map-g path {
+  stroke-width: 1;
+  stroke: #293e5a;
+  fill-opacity: 0; }
+
 /* Axes */
 /* ---- */
 .tick text {
@@ -142,33 +205,3 @@ span#test {
 
 .x .tick line {
   stroke-width: 0; }
-
-/* Map */
-/* --- */
-#map-g path {
-  stroke-width: 1;
-  stroke: #293e5a;
-  fill-opacity: 0; }
-
-/* Buttons */
-/* ------- */
-button {
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 0.8em;
-  color: #6b788e;
-  background: none;
-  border: none;
-  border-bottom: 1px dotted #6b788e;
-  margin: 0 0.5rem;
-  padding: 0;
-  cursor: pointer;
-  outline: none;
-  transition: all 250ms; }
-
-button:hover {
-  color: #EEEEAE;
-  border-color: #EEEEAE; }
-
-button.highlight-button {
-  color: #f8f8f8;
-  border-bottom: 1px solid #f8f8f8; }

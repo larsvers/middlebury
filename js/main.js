@@ -652,17 +652,6 @@ function ready(error, data, world) {
 
 
 
-	// // Only leaf nodes
-	// var data = vis.pack.nodes.filter(function(el) { return !el.children; });
-
-	// 	// Extents
-	// var partExt = d3.extent(data, function(d) { return d.participating; });
-	// var operExt = d3.extent(data, function(d) { return d.operating_weeks; });
-	// var yearExt = d3.extent(data, function(d) { return moment(d.year_began); });
-
-
-
-
 
 
 /* Handler */
