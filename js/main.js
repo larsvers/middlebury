@@ -15,6 +15,7 @@ vis.svgContext;
 vis.scale = { colour: undefined, r: undefined, contextY: undefined, contextX: undefined };
 vis.geo = {};
 vis.sim;
+vis.leaves;
 vis.axis =  { contextX: undefined, contextY: undefined };
 vis.colourMap = [
 	{ school: "Bread Loaf School of English", colour: "#8EA9E8" },
@@ -74,8 +75,9 @@ function setRadii(unitSize) {
 			.attr('r', function(d) { 
 
 				// save for easy pick up later at collision detection
-				d.rMap = d.children ? 0 : unitSize ? vis.dims.radius : vis.scale.r(d.data[vis.radiusMeasure])
-				return d.rMap;
+				d.rSmall = d.children ? 0 : unitSize ? vis.dims.radius : vis.scale.r(d.data[vis.radiusMeasure])
+				console.log(d.rSmall);
+				return d.rSmall;
 
 			});
 
@@ -102,9 +104,11 @@ function highlightButton(parentId, selection) {
 function hideGeoNullNodes(hide, selection) {
 
 	if (hide) {
-		selection.filter(function(d) { return d.data.lng === null; }).transition().style('opacity', 0).style('pointer-events', 'none');
+		selection.filter(function(d) { return d.data.lng === null; })
+			.transition().style('opacity', 0).style('pointer-events', 'none');
 	} else {
-		selection.filter(function(d) { return d.data.lng === null; }).transition().style('opacity', 0).style('pointer-events', 'all');
+		selection.filter(function(d) { return d.data.lng === null; })
+			.transition().style('opacity', 0).style('pointer-events', 'all');
 	}
 
 }
@@ -242,26 +246,20 @@ function initMapSimulation(nodes) {
   		.velocityDecay(0.2)
       .force('xPos', d3.forceX(function(d) { d.xGeo = vis.geo.projection([d.data.lng, d.data.lat])[0]; return d.xGeo }).strength(0.1)) // also augment map positions as xGeo and yGeo...
       .force('yPos', d3.forceY(function(d) { d.yGeo = vis.geo.projection([d.data.lng, d.data.lat])[1]; return d.yGeo; }).strength(0.1))
-      .force('collide', d3.forceCollide().radius(function(d) { return d.rMap + vis.dims.padding }))
+      .force('collide', d3.forceCollide().radius(function(d) { return d.rSmall + vis.dims.padding }))
     	.on('tick', tick);
 
-  leaves = d3.selectAll('.node-leaf'); // save re-selection time in tick() TODO global
+  vis.leaves = d3.selectAll('.node-leaf'); // save re-selection time in tick() TODO global
 
   function tick() {
 
-    leaves.attr('transform', function(d) { return 'translate(' + d.x + ', ' + d.y + ')'; } );
+    vis.leaves.attr('transform', function(d) { return 'translate(' + d.x + ', ' + d.y + ')'; } );
 
   } // tick()
 
 } // initMapSimulation()
 
 function mapSimulation() {
-	
-	// corce x to positions prior to map simulation === pack positions
-	leaves.data().forEach(function(el) {
-    el.x = el.xPack;
-    el.y = el.yPack;
-	});
 
 	vis.sim.stop();
 
@@ -272,6 +270,84 @@ function mapSimulation() {
   vis.sim.alpha(0.5).restart()
 
 } // mapSimulation()
+
+
+
+
+
+
+
+
+
+/* Timeline */
+/* -------- */
+
+function layoutTimeData(nodes) {
+
+	// Data prep
+	var leaves = nodes.filter(function(el) { return !el.children; });
+
+	// Time scale
+	var timeExtent = d3.extent(leaves, function(d) { return moment(d.data.year_began); })
+	var timeScale = d3.scaleTime().domain(timeExtent).range([0, vis.dims.width]);
+
+
+	nodes.forEach(function(el) {
+
+		if (el.data.year_began) {
+			el.xTime = timeScale(el.data.year_began);
+			el.yTime = vis.dims.height/2;
+		}
+
+	})
+
+	return nodes;
+
+} // prepTimeData()
+
+
+function initTimeSimulation(nodes) {
+
+  vis.sim = d3.forceSimulation(nodes)
+  		.velocityDecay(0.2)
+      .force('xPos', d3.forceX(function(d) { return d.xTime }).strength(0.1)) // also augment map positions as xGeo and yGeo...
+      .force('yPos', d3.forceY(function(d) { return d.yTime; }).strength(0.1))
+      .force('collide', d3.forceCollide().radius(function(d) { return d.rSmall + vis.dims.padding }))
+    	.on('tick', tick);
+
+  vis.leaves = d3.selectAll('.node-leaf'); // save re-selection time in tick() TODO global
+
+  function tick() {
+
+    vis.leaves.attr('transform', function(d) { return 'translate(' + d.x + ', ' + d.y + ')'; } );
+
+  } // tick()
+
+} // initTimeSimulation()
+
+
+function timeSimulation() {
+	
+	vis.sim.stop();
+
+  vis.sim
+      .force('xPos', d3.forceX(function(d) { return d.xTime }).strength(0.1))
+      .force('yPos', d3.forceY(function(d) { return d.yTime; }).strength(0.1))
+
+  vis.sim.alpha(0.5).restart()
+
+} // timeSimulation()
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Context */
@@ -587,10 +663,10 @@ function elementInteraction() {
 
 		var list = 
 		(d.data.year_began ? '<p>Since ' + d.data.year_began + '</p>' : '') + 
-		'<p>' + d.data.participating + ' students</p>' + 
+		(d.data.participating ? '<p>' + d.data.participating + ' students</p>' : '') + 
 		(d.data.operating_weeks ? '<p>' + d.data.operating_weeks + ' weeks per year</p>' : '') +
-		'<p>Offers degree: ' + d.data.degree + '</p>' + 
-		'<p>Offers credit: ' + d.data.degree + '</p>';
+		(d.data.degree ? '<p>Offers degree: ' + d.data.degree + '</p>' : '') + 
+		(d.data.degree ? '<p>Offers credit: ' + d.data.degree + '</p>' : '');
 
 		tip.select('#tip-body-text').html(list)
 
@@ -680,6 +756,12 @@ function ready(error, data, world) {
 	drawMap(vis.geo.countries);
 
 
+	/* Timeline */
+	/* -------- */
+
+	vis.pack.nodes = layoutTimeData(vis.pack.nodes);
+
+
 	/* Initial context */
 	/* --------------- */
 
@@ -718,29 +800,6 @@ function ready(error, data, world) {
 
 
 
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	/* Listener */
 	/* -------- */
@@ -748,6 +807,7 @@ function ready(error, data, world) {
 	// Main visual listeners
 	d3.select('#btn-map').on('mousedown', positionMap); 
 	d3.select('#btn-pack').on('mousedown', positionPack); 
+	d3.select('#btn-time').on('mousedown', positionTime); 
 	
 	// Context visual listeners
 	d3.select('#btn-students').on('mousedown', students)
@@ -780,7 +840,7 @@ function positionMap() {
 	highlightButton('controls', d3.select('#btn-map'));
 
 	// Only leave nodes
-	var nodes = vis.pack.nodes.filter(function(el) { return !el.children; });
+	var nodes = vis.pack.nodes.filter(function(el) { return !el.children && el.data.year_began; });
 
 	// shrink circles
 	setRadii(false);
@@ -793,7 +853,6 @@ function positionMap() {
 
 	// hide geo === null bubbles
 	hideGeoNullNodes(true, d3.selectAll('.node'));
-
 
 } // positionMap()
 
@@ -813,9 +872,35 @@ function positionPack() {
 	d3.selectAll('.node')
 		.transition().duration(1000)
 			.attr('r', function(d) { return d.r; })
-			.attr('transform', function(d) { return 'translate(' + d.xPack + ', ' + d.yPack + ')'});
+			.attr('transform', function(d) { 
+				d.x = d.xPack; // update current x and y position for map or time simulation to move towards these coords
+				d.y = d.yPack;
+				return 'translate(' + d.xPack + ', ' + d.yPack + ')'
+			});
 
 } // positionPack
+
+function positionTime() {
+
+	// highlight button
+	highlightButton('controls', d3.select('#btn-time'));
+
+	// Only leave nodes
+	var nodes = vis.pack.nodes.filter(function(el) { return !el.children && el.data.year_began;; });
+
+	// shrink circles
+	setRadii(false);
+
+	// show map
+	showMap(false)
+
+	// Move to timeline
+	!vis.sim ? initTimeSimulation(nodes) : timeSimulation();
+
+	// hide geo === null bubbles
+	hideGeoNullNodes(false, d3.selectAll('.node'));
+
+} // positionMap()
 
 
 /* -- Context visual -- */

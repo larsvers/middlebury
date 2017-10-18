@@ -99,8 +99,26 @@ x tooltip
 	- show at top if mouse at bottom
 
 
-
 * timeline
+	
+	1) Calulcate end positions
+	   - x scale
+	   - calculate
+	
+	2) Simulation start
+	   - do I need to update x?
+	
+	3) Build axis
+	   - Component
+	   - Draw
+	   - Show/Hide
+
+
+
+
+
+
+
 * revisit blue colors
 * notes
 * publish
