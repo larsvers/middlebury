@@ -882,7 +882,7 @@ function positionMap() {
 	hideGeoNullNodes(true, d3.selectAll('.node'));
 
 	// Add description in header
-	d3.select('#header h4').html('School location worldwide (zoom to focus)')
+	d3.select('#header h4').html('School locations (zoom to focus)')
 
 } // positionMap()
 
