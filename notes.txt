@@ -8,16 +8,26 @@ Data
 * all nodes * with * children only manifest in the circle packing and can trun turn opaque or the like for the map
 
 
-Chaneg notes
+
+Change notes
 ------------
 Data clean:
  * Some entries w/o lng/lat
  * Some entries seem to be aggregates (CV Starr 36 schools in 16 countries)
  * I left all notes in there, although in a production environment I wouldve spent more time on sensible removal (no lat/lng, no students/umbrealla schools, etc.)
+ * Removed some that wouldn't work and didn't add much
 
 Interaction:
  * Makes potentially sense to allow circle sizes to encode different variables
  * The context view should be able to show binary variables too
+
+Devices/Brwosers:
+ * Built for desktop/laptop. works on portratit tablet - looks ill on iPhone
+ * Built on and for Chrome. Works on all latest browsers not on IE (up to 11). 
+
+ Style:
+ * Colours and fonts (header only in fact) guided by http://www.middlebury.edu/#story554427
+ * Colours are reasnably accessible (work well for colorblind people)
 
 
 Problem 1
@@ -97,52 +107,20 @@ x tooltip
 	- build tooltip as much as possible in html and set outer div to opacity 0
 	- control opacity by handler
 	- show at top if mouse at bottom
-
-
-* timeline
-	
+x timeline
 	1) Calulcate end positions
 	   - x scale
 	   - calculate
-	
 	2) Simulation start
 	   - do I need to update x?
-	
 	3) Build axis
 	   - Component
 	   - Draw
 	   - Show/Hide
+x revisit blue colors
 
-
-
-
-
-
-
-* revisit blue colors
 * notes
 * publish
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

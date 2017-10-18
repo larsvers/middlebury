@@ -11,19 +11,17 @@
 /* Axes */
 /* ---- */
 
-
 .tick text {
   font-size: 10px;
   fill: $colour-type-minor;
   font-family: $font-nunito-sans;
-  text-anchor: end;
 }
 
 .x text {
 	fill: none;
 }
 
-.x.axis path {
+.x.axis path, .time.axis path {
   stroke: $colour-data-minor;
   shape-rendering: crispEdges;
 }
@@ -39,5 +37,6 @@
 	stroke-width: 0;
 }
 
-
-
+.time.axis {
+	opacity: 0;
+}

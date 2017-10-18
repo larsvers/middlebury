@@ -18,9 +18,9 @@ vis.sim;
 vis.leaves;
 vis.axis =  { contextX: undefined, contextY: undefined };
 vis.colourMap = [
-	{ school: "Bread Loaf School of English", colour: "#8EA9E8" },
-	{ school: "Bread Loaf Writers' Conference", colour: "#485A8C" },
-	{ school: "C.V. Starr Schools Abroad", colour: "#79C9F6" },
+	{ school: "Bread Loaf School of English", colour: "#446ed2" },
+	{ school: "Bread Loaf Writers' Conference", colour: "#94f3bf" },
+	{ school: "C.V. Starr Schools Abroad", colour: "#99d2f3" },
 	{ school: "Middlebury College", colour: "#F6C280" },
 	{ school: "Middlebury IIS", colour: "#DED93B" },
 	{ school: "Middlebury Language Schools", colour: "#DB8721" },
@@ -76,7 +76,7 @@ function setRadii(unitSize) {
 
 				// save for easy pick up later at collision detection
 				d.rSmall = d.children ? 0 : unitSize ? vis.dims.radius : vis.scale.r(d.data[vis.radiusMeasure])
-				console.log(d.rSmall);
+
 				return d.rSmall;
 
 			});
@@ -93,6 +93,16 @@ function showMap(show) {
   }
 
 } // showMap()
+
+function showTimeAxis(show) {
+
+  if (show) {
+    d3.select('.time.axis').transition().duration(500).style('opacity', 1);
+  } else {
+    d3.select('.time.axis').transition().duration(500).style('opacity', 0);
+  }
+
+} // showTimeAxis()
 
 function highlightButton(parentId, selection) {
 
@@ -112,6 +122,8 @@ function hideGeoNullNodes(hide, selection) {
 	}
 
 }
+
+
 
 /* General */
 /* ------- */
@@ -181,24 +193,27 @@ function drawPack(data) {
 
 	circles.enter().append('a')
 		.merge(circles)
-			.attr('href', function(d) { return d.data.url})
+			.attr('href', function(d) { return d.data.url; })
 			.attr('target', '_blank')
 		.append('circle')
 			.attr('class', function(d) { return d.parent ? d.children ? 'node' : 'node node-leaf' : 'node node-root'; })
 			.attr('id', function(d) { return d.data.id; })
 			.style('fill', function(d) { return d.children ? '#293e5a' : d.data.colour; })
 			.style('fill-opacity', function(d) { return d.parent ? d.children ? 0.9 : 1 : 0.4; })
+			.style('pointer-events', 'none')
 			.attr('transform', function(d) { 
 				d.xPack = d.x; // augment data with pack positions...
 				d.yPack = d.y;
 				return 'translate(' + d.x + ', ' + d.y + ')'; 
 			})
 		.transition().ease(d3.easeElastic).duration(1500).delay(function(d,i) { return i * 20; })
-			.attr('r', function(d) { return d.r; });
+			.attr('r', function(d) { return d.r; })
+			.on('end', function() { d3.selectAll('.node').style('pointer-events', 'all') }); // allow interaction only after transition (otherwise circles might get stuck in size)
 
 	circles.exit().transition().attr('r', 0).remove()
 
 } // drawPack()
+
 
 
 /* Map */
@@ -264,18 +279,12 @@ function mapSimulation() {
 	vis.sim.stop();
 
   vis.sim
-      .force('xPos', d3.forceX(function(d) { return d.xGeo }).strength(0.1))
-      .force('yPos', d3.forceY(function(d) { return d.yGeo; }).strength(0.1))
+      .force('xPos', d3.forceX(function(d) { if (!d.xGeo) { d.xGeo = vis.geo.projection([d.data.lng, d.data.lat])[0]; } return d.xGeo }).strength(0.1)) // also augment map positions as xGeo and yGeo...
+      .force('yPos', d3.forceY(function(d) { if (!d.yGeo) { d.yGeo = vis.geo.projection([d.data.lng, d.data.lat])[1]; } return d.yGeo; }).strength(0.1))
 
   vis.sim.alpha(0.5).restart()
 
 } // mapSimulation()
-
-
-
-
-
-
 
 
 
@@ -285,25 +294,43 @@ function mapSimulation() {
 function layoutTimeData(nodes) {
 
 	// Data prep
-	var leaves = nodes.filter(function(el) { return !el.children; });
+	var leaves = nodes
+			.filter(function(el) { return !el.children; })
+			.map(function(el) { return el.data.year_began; });
 
 	// Time scale
-	var timeExtent = d3.extent(leaves, function(d) { return moment(d.data.year_began); })
-	var timeScale = d3.scaleTime().domain(timeExtent).range([0, vis.dims.width]);
+	var timeExtent = d3.extent(leaves);
+	timeExtent = [new Date(timeExtent[0], 0), new Date(timeExtent[1], 0)]
 
+	var timeScale = d3.scaleTime().domain(timeExtent).range([vis.dims.width * 0.1, vis.dims.width * 0.9]);
 
+	// Add coordinates to data
 	nodes.forEach(function(el) {
 
 		if (el.data.year_began) {
-			el.xTime = timeScale(el.data.year_began);
+			el.xTime = timeScale(new Date(el.data.year_began, 0));
 			el.yTime = vis.dims.height/2;
 		}
 
-	})
+	});
 
-	return nodes;
+	return { nodes: nodes, timeScale: timeScale };
 
 } // prepTimeData()
+
+
+function initTimeline(tScale) {
+
+	var timeAxis = d3.axisTop(tScale)
+			.tickSizeOuter(0)
+			.tickPadding(20)
+
+	vis.svg.insert('g', ':first-child')
+		.attr('class', 'time axis')
+		.attr('transform', 'translate(0, ' + (vis.dims.height/2) + ')')
+		.call(timeAxis);
+
+} // initTimeline
 
 
 function initTimeSimulation(nodes) {
@@ -340,16 +367,6 @@ function timeSimulation() {
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* Context */
 /* ------- */
 
@@ -358,7 +375,7 @@ function setupContext() {
 	// Dimensions
   var container = d3.select('#vis-context').node().getBoundingClientRect();
 
-  var margin = { top: 100 , right: 30 , bottom: 30 , left: 50 },
+  var margin = { top: 75 , right: 30 , bottom: 15 , left: 50 },
       width = container.width - margin.left - margin.right,
       height = container.height - margin.top - margin.bottom;
 
@@ -530,6 +547,7 @@ function drawContext(data, measure) {
 } // drawContext()
 
 
+
 /* Legend */
 /* ------ */
 
@@ -626,6 +644,7 @@ function buildLegend() {
 } // buildLegend()
 
 
+
 /* Interactivity */
 /* ------------- */
 
@@ -675,7 +694,7 @@ function elementInteraction() {
 		// highlight
 		d3.selectAll('#' + d.data.id)
 			.transition()
-				.style('stroke-width', 6)
+				.style('stroke-width', 5)
 				.style('stroke', '#fff')
 			.transition()
 				.style('stroke-width', 4);
@@ -714,7 +733,7 @@ function elementInteraction() {
 
 
 /* Initial sequence on load */
-/* ------------------------ */
+/* ======================== */
 
 function ready(error, data, world) {
 	if (error) throw error;
@@ -759,7 +778,11 @@ function ready(error, data, world) {
 	/* Timeline */
 	/* -------- */
 
-	vis.pack.nodes = layoutTimeData(vis.pack.nodes);
+	var timeLayout = layoutTimeData(vis.pack.nodes);
+
+	vis.pack.nodes = timeLayout.nodes
+
+	initTimeline(timeLayout.timeScale);
 
 
 	/* Initial context */
@@ -832,6 +855,7 @@ function ready(error, data, world) {
 /* Handler */
 /* ------- */
 
+
 /* -- Main visual -- */
 
 function positionMap() {
@@ -847,6 +871,9 @@ function positionMap() {
 
 	// show map
 	showMap(true)
+
+	// hide time axis
+	showTimeAxis(false)
 
 	// Move to map
 	!vis.sim ? initMapSimulation(nodes) : mapSimulation();
@@ -866,6 +893,9 @@ function positionPack() {
 
 	// hide map
 	showMap(false)
+
+	// hide time axis
+	showTimeAxis(false)
 
 	vis.sim.stop();
 
@@ -893,6 +923,9 @@ function positionTime() {
 
 	// show map
 	showMap(false)
+
+	// hide time axis
+	showTimeAxis(true)
 
 	// Move to timeline
 	!vis.sim ? initTimeSimulation(nodes) : timeSimulation();
@@ -979,7 +1012,7 @@ function zoomed() {
 
 
 /* Load data */
-/* --------- */
+/* ========= */
 
 d3.queue()
 		.defer(d3.json, '../data/nested-data.json')
