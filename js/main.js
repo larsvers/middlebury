@@ -131,13 +131,6 @@ function setupVisual() {
     .append('g').attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')') // to translate
     .append('g').attr('id', 'chart-g'); // to base zoom on a 0, 0 coordinate system
 
-  // Set up zoom surface
-  var zoomSurface = d3.select('svg#main-svg').append('rect')
-  		.attr('id', 'zoom-surface')
-  		.attr('width', container.width)
-  		.attr('height', container.height)
-  		.style('opacity', 0)
-
 
   // Add to global
   vis.dims.width = width;
@@ -455,8 +448,10 @@ function drawContext(data, measure) {
 } // drawContext()
 
 
-function configLegend() {
+/* Legend */
+/* ------ */
 
+function configLegend() {
 
 	var legend = buildLegend()
 			.dims(vis.dimsContext)
@@ -549,6 +544,100 @@ function buildLegend() {
 } // buildLegend()
 
 
+/* Interactivity */
+/* ------------- */
+
+
+function nodeInteraction() {
+
+	// Select and keep in variable
+	var tip = d3.select('#tooltip');
+
+	// Listeners
+	d3.selectAll('.node-leaf')
+		.on('mouseover', mouseover)
+		.on('mousemove', mousemove)
+		.on('mouseout', mouseout);
+
+
+	function mouseover(d) {
+
+		// Show and position
+		tip.transition().style('opacity', 1);
+		tip.style('top', d3.event.pageY + 'px')
+			.style('left', (d3.event.pageX + 20) + 'px');
+
+		// Write header
+		tip.select('#tip-header h2').html(d.data.school);
+		tip.select('#tip-header h4').html(d.data.unit);
+
+
+		// Write body
+
+		tip.select('#tip-describe').html(d.data.description);
+
+		var list = 
+		'<p>Since ' + d.data.year_began + '</p>' + 
+		'<p>' + d.data.participating + ' students</p>' + 
+		'<p>Offers degree: ' + d.data.degree + '</p>' + 
+		'<p>Offers credit: ' + d.data.degree + '</p>' + 
+		'<p>' + d.data.operating_weeks + ' weeks per year</p>';
+
+		tip.select('#tip-body-text').html(list)
+
+		tip.select('#tip-body-image img').attr('src', d.data.image_url);
+
+
+
+
+
+/*
+          "description": "The Middlebury Bread Loaf School of English is a summer graduate school that brings together more than 425 students at our three campuses each summer.",
+          "year_began": 1999,
+          "degree": "yes",
+          "connections": null,
+          "connections_notes": null,
+          "url": "http://www.middlebury.edu/blse",
+          "credit": "yes",
+          "id": "BL1",
+          "image_url": "http://sandcat.middlebury.edu/palladio/newpalladio/thumbnails/Bread%20Loaf/BLSE%20MA%20ML.jpg",
+          "unit": "Master of Arts",
+          "school": "Bread Loaf School of English",
+          "unit_long": "Bread Loaf Master of Arts",
+          "lng": -73.0156,
+          "lat": 43.9817,
+          "participating": 425,
+          "operating_weeks": 8,
+          "location": "Bread Loaf, Vermont",
+          "colour": "#8EA9E8"
+*/
+
+
+	} // mouseover()
+
+	function mousemove(d) {
+
+		// Move along
+		tip.style('top', d3.event.pageY + 'px')
+			.style('left', (d3.event.pageX + 20) + 'px');
+
+
+	} // mousemove()
+
+	function mouseout(d) {
+
+		// Remove
+		tip.transition().style('opacity', 0);
+
+	} // mouseout()
+
+
+
+} // nodeInteraction()
+
+
+
+
 /* Initial sequence on load */
 /* ------------------------ */
 
@@ -560,6 +649,7 @@ function ready(error, data, world) {
 	vis.data = data;
 
 	setupVisual();
+
 
 	/* Initial pack */
 	/* ------------ */
@@ -578,6 +668,7 @@ function ready(error, data, world) {
 
 	console.log(vis.pack);
 
+
 	/* Map */
 	/* --- */
 
@@ -588,6 +679,7 @@ function ready(error, data, world) {
 	setRadiusScale(vis.radiusMeasure);
 
 	drawMap(vis.geo.countries);
+
 
 	/* Initial context */
 	/* --------------- */
@@ -614,11 +706,37 @@ function ready(error, data, world) {
 	highlightButton('vis-context-controls', d3.select('#btn-students'));
 
 
-
-	/* Legend */
-	/* ------ */
+	/* Build legend */
+	/* ------------ */
 
 	configLegend();
+
+
+	/* Interactivity */
+	/* ------------- */
+
+	nodeInteraction();
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -644,9 +762,7 @@ function ready(error, data, world) {
 
 	var zoom = d3.zoom().scaleExtent([0.66, 2.8]).on('zoom', zoomed);
 
-	d3.select('#zoom-surface').call(zoom);
-
-
+	d3.select('svg#main-svg').call(zoom);
 
 } // ready()
 

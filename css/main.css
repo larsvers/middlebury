@@ -160,6 +160,10 @@ button.highlight-button {
 #tip-header h2, #tip-header h4 {
   margin: 0; }
 
+#tip-describe {
+  padding: 1rem;
+  width: 300px; }
+
 #tip-body {
   display: flex;
   padding: 1rem;

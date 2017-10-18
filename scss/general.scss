@@ -84,6 +84,11 @@ button.highlight-button {
 	margin: 0;
 }
 
+#tip-describe {
+	padding: 1rem;
+	width: 300px;
+}
+
 #tip-body {
 	display: flex;
 	padding: 1rem;
@@ -101,4 +106,5 @@ button.highlight-button {
 #tip-body-image img {
 	max-width: 100%;
 }
+
 
