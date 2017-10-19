@@ -591,7 +591,7 @@ function buildLegend() {
 				.attr('dx', '0.75em')
 				.attr('dy', '0.35em')
 				.text(function(d) { return d.school; })
-				.style('font-size', '0.55vw') // make text size responsive
+				.style('font-size', '0.7em')
 				.style('fill', '#6b788e');
 
 
