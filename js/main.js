@@ -19,11 +19,11 @@ vis.leaves;
 vis.axis =  { contextX: undefined, contextY: undefined };
 vis.colourMap = [
 	{ school: "Bread Loaf School of English", colour: "#446ed2" },
-	{ school: "Bread Loaf Writers' Conference", colour: "#94f3bf" },
+	{ school: "Bread Loaf Writers' Conf.", colour: "#94f3bf" },
 	{ school: "C.V. Starr Schools Abroad", colour: "#99d2f3" },
 	{ school: "Middlebury College", colour: "#F6C280" },
 	{ school: "Middlebury IIS", colour: "#DED93B" },
-	{ school: "Middlebury Language Schools", colour: "#DB8721" },
+	{ school: "Middlebury Lang. Schools", colour: "#DB8721" },
 	{ school: "Middlebury School of the Env.", colour: "#AD74ED" }
 ];
 
@@ -591,7 +591,7 @@ function buildLegend() {
 				.attr('dx', '0.75em')
 				.attr('dy', '0.35em')
 				.text(function(d) { return d.school; })
-				.style('font-size', '0.55vw') // make text size responsive
+				.style('font-size', '0.7em')
 				.style('fill', '#6b788e');
 
 
