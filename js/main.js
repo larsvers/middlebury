@@ -681,8 +681,9 @@ function elementInteraction() {
 		tip.select('#tip-describe').html(d.data.description + '<br><span class="reduced">Click element to go to website</span>');
 
 		var list = 
+		(d.data.location ? '<p>' + d.data.location + '</p>' : '') + 
 		(d.data.year_began ? '<p>Since ' + d.data.year_began + '</p>' : '') + 
-		(d.data.participating ? '<p>' + d.data.participating + ' students</p>' : '') + 
+		(d.data.participating ? '<p>' + d.data.participating + ' participants</p>' : '') + 
 		(d.data.operating_weeks ? '<p>' + d.data.operating_weeks + ' weeks per year</p>' : '') +
 		(d.data.degree ? '<p>Offers degree: ' + d.data.degree + '</p>' : '') + 
 		(d.data.degree ? '<p>Offers credit: ' + d.data.degree + '</p>' : '');
