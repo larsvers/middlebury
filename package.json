@@ -18,7 +18,7 @@
     "d3-geo-projection": "^2.3.1",
     "d3-scale-chromatic": "^1.1.1",
     "topojson": "^3.0.2",
-    "moment": "^2.18.1"
+    "moment": "^2.29.2"
   },
   "devDependencies": {
     "live-server": "~ 1.2.0",
